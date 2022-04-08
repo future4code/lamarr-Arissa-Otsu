@@ -1,0 +1,2 @@
+# Aprendizados da Semana
+Entre os dias 04/04/2022 e 08/04/2022 aprendi sobre os seguintes conteúdos: **terminal**, **Git** e **Github**. Dentro desses conteúdos, tive o meu primeiro contato com os comandos, como: mdkir, ls, cd, touch, etc. Além disso, precisei queimar alguns neurônios para entender como funciona o git, principalmente a parte de branch, rs. Por fim, consegui realizar o meu primeiro Pull Request!
