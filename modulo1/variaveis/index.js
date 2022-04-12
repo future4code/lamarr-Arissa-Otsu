@@ -10,7 +10,7 @@
                 A variável t poderia ser chamada de rendaDiaria
 */
 
-// Exercícios de escrito de código
+// Exercícios de escrita de código
 
 //  Questão 01
 let nome1
@@ -32,7 +32,7 @@ let janta = prompt ("Você jantou hoje?")
 console.log ("Você tomou café da manhã hoje?", cafeDaManha)
 console.log ("Você almoçou hoje?", almoço) 
 console.log ("Você jantou hoje?", janta) 
-    
+
 // Questão 03
 let a = 10
 let b = 25
