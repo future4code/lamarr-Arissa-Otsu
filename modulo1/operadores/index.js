@@ -68,7 +68,7 @@ console.log("O valor da temperatura digitada em °F é:", (valorEmCelsius*(9/5)+
 /* // Questão 02
 let consumo = 280
 let desconto = 15
-let valor = 0,05
+let valor = 0.05
 
 console.log("O valor a ser pago pelo consumo de 280 quilowatt-hora é:", consumo*valor, "reais.")
 console.log("O valor a ser pago pelo consumo de 280 quilowatt-hora com 15% de desconto é:", consumo*valor*(100-desconto)/100, "reais")
