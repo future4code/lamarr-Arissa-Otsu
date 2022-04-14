@@ -8,15 +8,15 @@
 */
 
 // Questão 02
-/* Há a necessidade de transformar as variavéis primeiroNumero e segundoNumero em variáveis do tipo number para que a operação de soma seja feita.
- O resultado que será impresso no console será a junção dos dois números digitados (primeiroNumerosegundoNumero)
+/* Há a necessidade de transformar as variáveis primeiroNumero e segundoNumero em variáveis do tipo number para que a operação de soma seja feita.
+ O resultado que será impresso no console será a junção dos dois números digitados (primeiroNumerosegundoNumero).
 */
 
 // Questão 03
 /* Pode-se utilizar a conversão Number(), conforme código abaixo:
 
 let primeiroNumero = Number(prompt("Digite um numero!"))
-let segundoNumero = Number (prompt("Digite outro numero!"))
+let segundoNumero = Number(prompt("Digite outro numero!"))
 
 const soma = primeiroNumero + segundoNumero
 
@@ -33,7 +33,7 @@ console.log("Sua idade é maior do que a do seu melhor amigo?", (idade > idadeMe
 console.log("A diferença de idade entre vocês é:", (idade-idadeMelhorAmigo))
 
 // Questão 02
-let numeroPar = Number (prompt("Digite um número par."))
+let numeroPar = Number(prompt("Digite um número par."))
 console.log("O resto da divisão é:", (numeroPar % 2)) // O resultado que será impresso será sempre zero, pois todo número par é divisível por 2.
 // Se um número ímpar for inserido, o resultado que será impresso será sempre 1.
 
@@ -45,7 +45,7 @@ console.log("A sua idade em horas é:", (idadeAnos*365*24))
 
 // Questão 04
 let primeiroNumero = Number(prompt("Digite um número."))
-let segundoNumero = Number (prompt("Digite outro número."))
+let segundoNumero = Number(prompt("Digite outro número."))
 
 console.log("O primeiro numero é maior que segundo?", (primeiroNumero>segundoNumero))
 console.log("O primeiro numero é igual ao segundo?", (primeiroNumero===segundoNumero))
