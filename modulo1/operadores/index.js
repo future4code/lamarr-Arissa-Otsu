@@ -62,7 +62,7 @@ console.log ("O valor de 77 °F em K é:", (((a-32)*(5/9))+273.15), "K")
 console.log("O valor de 80 °C em °F é:", (b*(9/5)+32),"°F")
 console.log("O valor de 30 °C em °F é:", (c*(9/5)+32),"°F.","E o valor de 30 °C em K é:",(c + 273.15) , "K")
 
-let valorEmCelsius = Number(prompt("Digite o valor da temperatura em graus valorEmCelsius."))
+let valorEmCelsius = Number(prompt("Digite o valor da temperatura em graus Celsius."))
 console.log("O valor da temperatura digitada em °F é:", (valorEmCelsius*(9/5)+32),"°F.","E o valor da temperatura digitada em K é:",(valorEmCelsius + 273.15) , "K") */
 
 /* // Questão 02
