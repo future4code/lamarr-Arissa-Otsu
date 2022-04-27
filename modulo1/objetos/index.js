@@ -82,15 +82,17 @@ const fruta3 = {
 }
 
 // c.
-function colocarNoCarrinho(compras){
-    compras.push(fruta1)
-    compras.push(fruta2)
-    compras.push(fruta3)
-    return compras
+function colocarNoCarrinho(fruta){
+    carrinho.push(fruta)
+    return carrinho
 }
 
+carrinho.push(fruta1)
+carrinho.push(fruta2)
+carrinho.push(fruta3)
+
 // d.
-console.log(colocarNoCarrinho(carrinho))
+console.log(carrinho)
 
 // Desafios
 
@@ -150,15 +152,13 @@ const fruta3 = {
 }
 
 // c.
-function colocarNoCarrinho(compras){
-    compras.push(fruta1)
-    compras.push(fruta2)
-    compras.push(fruta3)
-    return compras
+function colocarNoCarrinho(fruta){
+    carrinho.push(fruta)
+    return carrinho
 }
 
 // d.
-console.log(colocarNoCarrinho(carrinho))
+console.log(carrinho)
 
 // e.
 function controlarEstoque(fruta){
