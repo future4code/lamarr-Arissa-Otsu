@@ -82,15 +82,15 @@ const fruta3 = {
 }
 
 // c.
-function colocarNoCarrinho(){
-    carrinho.push(fruta1)
-    carrinho.push(fruta2)
-    carrinho.push(fruta3)
-    return carrinho
+function colocarNoCarrinho(compras){
+    compras.push(fruta1)
+    compras.push(fruta2)
+    compras.push(fruta3)
+    return compras
 }
 
 // d.
-console.log(colocarNoCarrinho())
+console.log(colocarNoCarrinho(carrinho))
 
 // Desafios
 
@@ -150,26 +150,26 @@ const fruta3 = {
 }
 
 // c.
-function colocarNoCarrinho(){
-    carrinho.push(fruta1)
-    carrinho.push(fruta2)
-    carrinho.push(fruta3)
-    return carrinho
+function colocarNoCarrinho(compras){
+    compras.push(fruta1)
+    compras.push(fruta2)
+    compras.push(fruta3)
+    return compras
 }
 
 // d.
-console.log(colocarNoCarrinho()) 
+console.log(colocarNoCarrinho(carrinho))
 
 // e.
 function controlarEstoque(fruta){
     const disponibilidadeInvertida = {
         nome: fruta.nome,
-        disponibilidade: false
+        disponibilidade: !fruta.disponibilidade
     }
     return disponibilidadeInvertida
 }
 
 console.log(controlarEstoque(fruta1))
 console.log(controlarEstoque(fruta2))
-console.log(controlarEstoque(fruta3)) */
-
+console.log(controlarEstoque(fruta3)) 
+*/
