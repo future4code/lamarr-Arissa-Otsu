@@ -123,12 +123,15 @@ console.log ("")
 // Desafios
 
 // Exercício 01
-/* console.log ("Vamos jogar!")
+/* console.log ("Resolução do desafio 1")
+console.log ("Vamos jogar!")
 let numeroDoPrimeiroJogador = Number(prompt("Digite um número."))
 let numeroChutado
+let numeroDeTentativas = 0
 
 while (numeroDoPrimeiroJogador !== numeroChutado) {
     numeroChutado = Number(prompt("Chute um número."))
+    numeroDeTentativas++
     if (numeroChutado < numeroDoPrimeiroJogador) {
         console.log (`O número chutado foi: ${numeroChutado}`)
         console.log ("Errou!! O número escolhido é maior do que o número que você chutou.")
@@ -138,6 +141,27 @@ while (numeroDoPrimeiroJogador !== numeroChutado) {
     } 
 }
 console.log (`O número chutado foi: ${numeroChutado}`)
-console.log ("Acertou!") */
+console.log ("Acertou!")
+console.log (`O número de tentativas foi: ${numeroDeTentativas}.`) */
 
+// Exercício 02
+/* console.log ("Resolução do desafio 2")
+console.log ("Vamos jogar!")
+let numeroAleatorio = Math.floor(Math.random() * 100) + 1
+let numeroChutado
+let numeroDeTentativas = 0
 
+while (numeroAleatorio !== numeroChutado) {
+    numeroChutado = Number(prompt("Chute um número."))
+    numeroDeTentativas++
+    if (numeroChutado < numeroAleatorio) {
+        console.log (`O número chutado foi: ${numeroChutado}`)
+        console.log ("Errou!! O número escolhido é maior do que o número que você chutou.")
+    } else if (numeroChutado > numeroAleatorio) {
+        console.log (`O número chutado foi: ${numeroChutado}`)
+        console.log ("Errou!! O número escolhido é menor do que o número que você chutou.")
+    } 
+}
+console.log (`O número chutado foi: ${numeroChutado}`)
+console.log ("Acertou!")
+console.log (`O número de tentativas foi: ${numeroDeTentativas}.`) */
