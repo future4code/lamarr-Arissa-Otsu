@@ -11,42 +11,39 @@
  * 
  */
 
-console.log ("Boas vindas ao jogo de Blackjack!")
+let cartasDoUsuario = []
+let cartasDoComputador = []
+let pontuacaoDoUsuario = 0
+let pontuacaoDoComputador = 0
+let textoDoUsuario = ""
+function adicionarCarta (carta) {
+   let cartaSorteada = comprarCarta()
+   carta.push(cartaSorteada)
+}
 
-if(confirm("Quer iniciar uma nova rodada?")) {
+if(confirm("Boas vindas ao jogo de Blackjack!" + "\n" +"Quer iniciar uma nova rodada?")) {
 	// o que fazer se o usuário clicar "ok"
-   let primeiraCartaDoUsuario = comprarCarta()
-   let segundaCartaDoUsuario = comprarCarta()
-   let primeiraCartaDoComputador = comprarCarta()
-   let segundaCartaDoComputador = comprarCarta()
+   adicionarCarta(cartasDoUsuario)
+   adicionarCarta(cartasDoUsuario)
+   adicionarCarta(cartasDoComputador)
+   adicionarCarta(cartasDoComputador)
 
-   if (primeiraCartaDoUsuario === "A" && segundaCartaDoUsuario === "A") {
-      primeiraCartaDoUsuario = comprarCarta()
-      segundaCartaDoUsuario = comprarCarta()
-   } else if (primeiraCartaDoComputador === "A" && segundaCartaDoComputador === "A") {
-      primeiraCartaDoComputador = comprarCarta()
-      segundaCartaDoComputador = comprarCarta()
+   console.log(cartasDoUsuario)
+   if (cartasDoUsuario[0].valor === 11 && cartasDoUsuario[1].valor === 11){
+      cartasDoUsuario = []
+   } else if (cartasDoComputador[0].valor === 11 && cartasDoComputador[1].valor === 11){
+      cartasDoComputador = []
    } else {
-      if (confirm (`Suas cartas são ${primeiraCartaDoUsuario} ${segundaCartaDoUsuario}. A carta revelada do computador é ${primeiraCartaDoComputador}.` + "\n" + "Deseja comprar mais uma carta?")) {
-
-      } else {
-         
+/*       for (i=0; i<cartasDoUsuario.length;i++) {
+         pontuacaoDoUsuario += cartasDoUsuario[i].valor
+         textoDoUsuario += cartasDoUsuario[i].texto
+      console.log(pontuacaoDoUsuario) */
+         if(confirm(`Suas cartas são ${cartasDoUsuario[0].texto} e ${cartasDoUsuario[1].texto}. A carta revelelada do computador é ${cartasDoComputador[0].texto}` + "\n" +"Deseja comprar mais uma carta?")) {
+            adicionarCarta(cartasDoUsuario)
+         }
       }
-   }
-   let pontuacaoDoUsuario = primeiraCartaDoUsuario.valor + segundaCartaDoUsuario.valor
-   let pontuacaoDoComputador = primeiraCartaDoComputador.valor + segundaCartaDoComputador.valor
+}
 
-   console.log (`Usuário - cartas: ${primeiraCartaDoUsuario.texto} ${segundaCartaDoUsuario.texto} - pontuação ${pontuacaoDoUsuario}`)
-   console.log (`Computador - cartas: ${primeiraCartaDoComputador.texto} ${segundaCartaDoComputador.texto} - pontuação ${pontuacaoDoComputador}`)
 
-   if (pontuacaoDoUsuario === pontuacaoDoComputador) {
-      console.log ("Empate!")
-   } else if (pontuacaoDoUsuario > pontuacaoDoComputador) {
-      console.log("O usuário ganhou!")
-   } else {
-      console.log ("O computador ganhou!")
-   }
 
-}else {
-	console.log("O jogo acabou.")
-} 
+
