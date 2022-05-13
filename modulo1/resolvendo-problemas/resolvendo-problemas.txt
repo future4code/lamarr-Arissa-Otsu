@@ -1,0 +1,11 @@
+Os 7 passos para auxílio na resolução de problemas são:
+
+1. Ler com atenção o enunciado do exercício e identificar qual deve ser o objetivo do código a ser criado;
+2. Retirar as principais informações do enunciado;
+3. Identificar quais serão as entradas e saídas do código;
+4. Construir um fluxograma para facilitar a criação da lógica do código;
+5. Não é um problema construir um código "feio" inicialmente. É importante testar cada uma das soluções pensadas até atingirmos o objetivo do código;
+6. Escolher o código que tenha a saída esperada e transcrever para o idioma e linguagem desejada;
+7. Aperfeiçoar o código.
+
+Esses passos são bem úteis nos casos em que há uma dificuldade em compreender o exercício.
