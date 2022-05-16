@@ -219,12 +219,38 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
+  let novaData = 0
+  let dataTransformada = ""
   
+  function mudarData (consultas) {
+    for (i=0; i < consultas.length; i++) {
+      novaData = Number(consultas[i].dataDaConsulta.split("/").reverse().join(""))
+      consultas[i].dataDaConsulta = novaData
+    }
+    return consultas
+  }
+
+  function ordenarData (array) {
+    return array.sort( (a,b) => {
+      return a-b
+    })
+  }
+
+  function transformarData (array) {
+    for (i=0; i < array.length; i++) {
+      dataTransformada = String(array[i].dataDaConsulta)
+      array[i].dataDaConsulta = dataTransformada
+    }
+    return array
+  }
+
+  return (transformarData(ordenarData(mudarData(consultas))))
 }
 
 
+
 // Rascunho para auxílio na resolução do Exercício 14
-let contas = 
+/* let contas = 
 [
 	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
 	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
@@ -248,5 +274,43 @@ for (let conta of contas) {
   conta.compras = []
   somaDasCompras = 0
 }
-console.log(contas)
+console.log(contas) */
 
+// Rascunho para auxílio na resolução do exercício 15B
+
+let consultas = [ 
+  { nome: "Márcia", dataDaConsulta: "04/05/2021" },
+  { nome: "Pedro", dataDaConsulta: "02/07/2021" },
+  { nome: "João",  dataDaConsulta: "01/10/2021" },
+  { nome: "Paula", dataDaConsulta: "03/11/2021" } 
+ ]
+
+function retornaArrayOrdenadoPorData(consultas) {
+  let novaData = 0
+  let dataTransformada 
+  function mudarData (consultas) {
+    for (i=0; i < consultas.length; i++) {
+      novaData = Number(consultas[i].dataDaConsulta.split("/").reverse().join(""))
+      consultas[i].dataDaConsulta = novaData
+    }
+    return consultas
+  }
+
+  function ordenarData (array) {
+    return array.sort( (a,b) => {
+      return a-b
+    })
+  }
+
+  function transformarData (array) {
+    for (i=0; i < array.length; i++) {
+      dataTransformada = String(array[i].dataDaConsulta)
+      array[i].dataDaConsulta = dataTransformada
+    }
+    return array
+  }
+
+  console.log (transformarData(ordenarData(mudarData(consultas))))
+
+}
+console.log (retornaArrayOrdenadoPorData(consultas))
