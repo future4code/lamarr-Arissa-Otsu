@@ -11,42 +11,97 @@
  * 
  */
 
-console.log ("Boas vindas ao jogo de Blackjack!")
+let cartasDoUsuario = []
+let cartasDoComputador = []
+let pontuacaoDoUsuario = 0
+let pontuacaoDoComputador = 0
+let textoDoUsuario = ""
+let textoDoComputador = ""
 
-if(confirm("Quer iniciar uma nova rodada?")) {
+function adicionarCarta (carta) {
+   let cartaSorteada = comprarCarta()
+   carta.push(cartaSorteada)
+}
+
+if(confirm("Boas vindas ao jogo de Blackjack!" + "\n" +"Quer iniciar uma nova rodada?")) {
 	// o que fazer se o usuário clicar "ok"
-   let primeiraCartaDoUsuario = comprarCarta()
-   let segundaCartaDoUsuario = comprarCarta()
-   let primeiraCartaDoComputador = comprarCarta()
-   let segundaCartaDoComputador = comprarCarta()
+   adicionarCarta(cartasDoUsuario)
+   adicionarCarta(cartasDoUsuario)
+   adicionarCarta(cartasDoComputador)
+   adicionarCarta(cartasDoComputador)
 
-   if (primeiraCartaDoUsuario === "A" && segundaCartaDoUsuario === "A") {
-      primeiraCartaDoUsuario = comprarCarta()
-      segundaCartaDoUsuario = comprarCarta()
-   } else if (primeiraCartaDoComputador === "A" && segundaCartaDoComputador === "A") {
-      primeiraCartaDoComputador = comprarCarta()
-      segundaCartaDoComputador = comprarCarta()
-   } else {
-      if (confirm (`Suas cartas são ${primeiraCartaDoUsuario} ${segundaCartaDoUsuario}. A carta revelada do computador é ${primeiraCartaDoComputador}.` + "\n" + "Deseja comprar mais uma carta?")) {
+   while ((cartasDoUsuario[0].valor === 11 && cartasDoUsuario[1].valor === 11) || (cartasDoComputador[0].valor === 11 && cartasDoComputador[1].valor === 11)) {
+      cartasDoUsuario = []
+      cartasDoComputador = []
+      adicionarCarta(cartasDoUsuario)
+      adicionarCarta(cartasDoUsuario)
+      adicionarCarta(cartasDoComputador)
+      adicionarCarta(cartasDoComputador)
+   } 
+   
+   textoDoUsuario = cartasDoUsuario[0].texto + cartasDoUsuario[1].texto
+   pontuacaoDoUsuario = cartasDoUsuario[0].valor + cartasDoUsuario[1].valor
+   textoDoComputador = cartasDoComputador[0].texto + cartasDoComputador[1].texto
+   pontuacaoDoComputador = cartasDoComputador[0].valor + cartasDoComputador[1].valor
 
-      } else {
-         
+   while ((pontuacaoDoUsuario < 21) && (confirm(`Suas cartas são ${textoDoUsuario}. A carta revelada do computador é ${cartasDoComputador[0].texto}` + "\n" +"Deseja comprar mais uma carta?")) ) {
+      adicionarCarta(cartasDoUsuario)
+      textoDoUsuario = ""
+      pontuacaoDoUsuario = 0
+      textoDoComputador = ""
+      pontuacaoDoComputador = 0  
+      for (i=0; i<cartasDoUsuario.length; i++) {
+         pontuacaoDoUsuario += cartasDoUsuario[i].valor
+         textoDoUsuario += cartasDoUsuario[i].texto
+         pontuacaoDoComputador = cartasDoComputador[0].valor + cartasDoComputador[1].valor
+         textoDoComputador = cartasDoComputador[0].texto + cartasDoComputador[1].texto
+      } 
+   } 
+   
+   if (pontuacaoDoUsuario <= 21){
+      while ((pontuacaoDoComputador < pontuacaoDoUsuario) && (pontuacaoDoComputador <=21)) { 
+         adicionarCarta(cartasDoComputador)
+         textoDoComputador = ""
+         pontuacaoDoComputador = 0  
+         for(i=0; i<cartasDoComputador.length; i++){
+            pontuacaoDoComputador += cartasDoComputador[i].valor
+            textoDoComputador += cartasDoComputador[i].texto    
+         }
       }
    }
-   let pontuacaoDoUsuario = primeiraCartaDoUsuario.valor + segundaCartaDoUsuario.valor
-   let pontuacaoDoComputador = primeiraCartaDoComputador.valor + segundaCartaDoComputador.valor
 
-   console.log (`Usuário - cartas: ${primeiraCartaDoUsuario.texto} ${segundaCartaDoUsuario.texto} - pontuação ${pontuacaoDoUsuario}`)
-   console.log (`Computador - cartas: ${primeiraCartaDoComputador.texto} ${segundaCartaDoComputador.texto} - pontuação ${pontuacaoDoComputador}`)
-
-   if (pontuacaoDoUsuario === pontuacaoDoComputador) {
-      console.log ("Empate!")
-   } else if (pontuacaoDoUsuario > pontuacaoDoComputador) {
-      console.log("O usuário ganhou!")
+   if (pontuacaoDoUsuario > pontuacaoDoComputador && pontuacaoDoUsuario <=21) {
+      alert (`Usuario - Cartas: ${textoDoUsuario} - Pontuação: ${pontuacaoDoUsuario}` + 
+            "\n" + 
+            `Computador - Cartas: ${textoDoComputador} - Pontuação: ${pontuacaoDoComputador}` + 
+            "\n" + 
+            "O usuário ganhou!")
+   } else if (pontuacaoDoComputador > pontuacaoDoUsuario && pontuacaoDoComputador <=21) {
+      alert (`Usuario - Cartas: ${textoDoUsuario} - Pontuação: ${pontuacaoDoUsuario}` + 
+            "\n" + 
+            `Computador - Cartas: ${textoDoComputador} - Pontuação: ${pontuacaoDoComputador}` + 
+            "\n" + 
+            "O computador ganhou!")
+   } else if (pontuacaoDoComputador > 21 && pontuacaoDoUsuario <= 21) {
+      alert (`Usuario - Cartas: ${textoDoUsuario} - Pontuação: ${pontuacaoDoUsuario}` + 
+            "\n" + 
+            `Computador - Cartas: ${textoDoComputador} - Pontuação: ${pontuacaoDoComputador}` + 
+            "\n" + 
+            "O usuário ganhou!")
+   } else if (pontuacaoDoUsuario > 21 && pontuacaoDoComputador <= 21){
+      alert (`Usuario - Cartas: ${textoDoUsuario} - Pontuação: ${pontuacaoDoUsuario}` + 
+            "\n" + 
+            `Computador - Cartas: ${textoDoComputador} - Pontuação: ${pontuacaoDoComputador}` + 
+            "\n" + 
+            "O computador ganhou!")
    } else {
-      console.log ("O computador ganhou!")
+      alert (`Usuario - Cartas: ${textoDoUsuario} - Pontuação: ${pontuacaoDoUsuario}` + 
+            "\n" + 
+            `Computador - Cartas: ${textoDoComputador} - Pontuação: ${pontuacaoDoComputador}` + 
+            "\n" + 
+            "Empate!")
    }
 
-}else {
-	console.log("O jogo acabou.")
-} 
+} else {
+   alert ("O jogo acabou.")
+}
