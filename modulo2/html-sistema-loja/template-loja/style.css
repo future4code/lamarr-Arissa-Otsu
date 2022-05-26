@@ -1,0 +1,70 @@
+header {
+    color: burlywood;
+    background-color: rgb(100, 65, 65);
+    text-align: center;
+    margin-top: 20 px;
+    margin-bottom: 20px;
+}
+
+footer{
+    text-align: center;
+    color:  burlywood;
+    background-color: rgb(100, 65, 65);
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+    color:rgb(100, 65, 65);
+}
+
+table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td{
+    border: 2px solid;
+    color: rgb(100, 65, 65);
+    
+}
+
+th {
+    border: 2px solid;
+    color:rgb(100, 65, 65);
+}
+
+.formatarTexto {
+    text-align: center;
+    color: rgb(100, 65, 65);
+}
+
+form {
+    text-align:center;
+    color:rgb(100, 65, 65);
+}
+
+ul{
+    color: rgb(100, 65, 65);
+    display: inline;
+    text-align: center;
+}
+
+.formatarFoto{
+    margin: 30px;
+    text-align: center;
+}
+
+button {
+    color: rgb(100, 65, 65);;
+    margin: 10px;
+}
+
+input {
+    margin: 5px;
+}
+
+li{
+    margin: 5px;
+}
