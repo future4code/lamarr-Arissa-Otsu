@@ -3,8 +3,59 @@ body{
 }
 
 header{
-    text-align: right;
-    margin-right: 40px;
-    background-color: #ba998e;
+    display: flex;
+    font-size: 32px;
+    background-color: #f8e7e8;
+    justify-content: space-evenly;
+    padding: 20px;
 }
-    
+
+
+footer {
+    display: block;
+    text-align: right;
+    padding: 20px;
+    background-color: #f8e7e8;
+    position: fixed;
+    bottom: 0;
+    width: 96%;
+}
+
+.alinharImagem {
+    display: flex;
+    align-content: flex-start;
+}
+
+a:link{
+    text-decoration: none;
+    color: grey ;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+form{
+    padding: 10px;
+}
+
+input[type=text]{
+    height: 30px;
+    width: 400px;
+}
+
+input[type=text][id=message]{
+    height: 200px;
+    width: 400px;
+}
+
+label{
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+}
+
+button {
+margin-left: 425px;
+margin-top: 10px;
+}
