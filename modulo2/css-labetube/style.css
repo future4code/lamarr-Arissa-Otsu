@@ -1,0 +1,68 @@
+header {
+    background-color: orange;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    align-items: center;
+}
+
+main {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+    padding-top: 30px;
+    justify-items: center;
+}
+
+footer {
+    background-color: rgb(100, 100, 100);
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 200px;
+}
+
+section {
+    border: rgb(37, 196, 37) solid 1px;
+    width: 300px;
+}
+
+.imagem {
+    width: 300px;
+    height: 230px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: orange;
+}
+
+input {
+    width: 150px;
+}
+
+p {
+    padding-left: 10px;
+}
+
+h1 {
+    padding-left: 10px;
+}
+
+h2 {
+    padding-left: 25px;
+    padding-top: 5px;
+}
+
+.videoPagina {
+    display: block;
+    width: 96%;
+    margin: 0 auto;
+    padding-top: 5px;
+}
