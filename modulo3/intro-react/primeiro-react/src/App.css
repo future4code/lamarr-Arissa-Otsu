@@ -1,0 +1,30 @@
+
+.App {
+  text-align: center;
+  margin-bottom: 6vh;
+}
+
+.titulo {
+  color: rgb(126, 203, 255);
+}
+
+.imagem {
+  width: 40vw;
+  border-radius: 60px;
+  border: black 2px solid;
+}
+.paragrafo {
+  color: black;
+  font-size: 1.5em;
+}
+
+.botao {
+  font-size: 1.2em;
+  width: 15vw;
+  height: 6vh;
+  color: white;
+  border: 2px solid black;
+  box-shadow: 8px 4px 8px black;
+  background-color: rgb(108, 193, 250);
+  border-radius: 15px;
+} 
