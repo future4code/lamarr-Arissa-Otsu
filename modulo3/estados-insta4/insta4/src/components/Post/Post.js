@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './style.css'
+import styled from 'styled-components'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
@@ -7,7 +7,36 @@ import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 
+const PostHeader = styled.div `
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
 
+    .UserPhoto {
+      height: 30px;
+      width: 30px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  `
+  const PostFooter =styled.div `
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: space-between;
+  `
+
+  const PostContainer = styled.div `
+    border: 1px solid gray;
+    width: 300px;
+    margin-bottom: 10px;
+
+    .PostPhoto {
+      width: 100%;
+  }
+  `
 
 function Post(props){
 
@@ -56,17 +85,17 @@ function Post(props){
   if(comentando) {
     componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario}/>
   }
-
+  
   return(
-    <div className = 'PostContainer'>
-      <div className = 'PostHeader'>
+    <PostContainer>
+      <PostHeader>
         <img className = 'UserPhoto' src={props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{props.nomeUsuario}</p>
-      </div>
+      </PostHeader>
 
       <img className = 'PostPhoto'src={props.fotoPost} alt={'Imagem do post'}/>
 
-      <div className = 'PostFooter'>
+      <PostFooter>
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={onClickCurtida}
@@ -78,9 +107,9 @@ function Post(props){
           onClickIcone={onClickComentario}
           valorContador={numeroComentarios}
         />
-      </div>
+      </PostFooter>
       {componenteComentario}
-    </div>
+    </PostContainer>
   )
 }
 
