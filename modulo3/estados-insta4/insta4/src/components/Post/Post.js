@@ -6,6 +6,9 @@ import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import iconeSalvoBranco from '../../img/bookmark_border.png'
+import iconeSalvoPreto from '../../img/bookmark_black.png'
+import {IconeSalvo} from '../IconeSalvo/IconeSalvo'
 
 const PostHeader = styled.div `
     height: 40px;
@@ -45,6 +48,7 @@ function Post(props){
   const [comentando, setComentando] = useState(false)
   const [numeroComentarios, setNumeroComentarios] = useState(0)
   const [comentario, setComentario] =useState("")
+  const [salvo, setSalvo] = useState(false)
 
   const onClickCurtida = () => {
     setCurtido(!curtido)
@@ -52,6 +56,15 @@ function Post(props){
       setnumeroCurtidas(numeroCurtidas-1)
     } else {
       setnumeroCurtidas(numeroCurtidas+1)
+    }
+  }
+
+  const onClickSalvo = () => {
+    setSalvo(!salvo)
+    if(salvo) {
+      iconeSalvo = iconeSalvoPreto
+    } else {
+      iconeSalvo = iconeSalvoBranco
     }
   }
 
@@ -80,6 +93,14 @@ function Post(props){
     iconeCurtida = iconeCoracaoBranco
   }
 
+  let iconeSalvo
+
+  if(salvo) {
+    iconeSalvo = iconeSalvoPreto
+  } else {
+    iconeSalvo = iconeSalvoBranco
+  }
+
   let componenteComentario
 
   if(comentando) {
@@ -106,6 +127,11 @@ function Post(props){
           icone={iconeComentario}
           onClickIcone={onClickComentario}
           valorContador={numeroComentarios}
+        />
+
+        <IconeSalvo
+          icone={iconeSalvo}
+          onClickIcone={onClickSalvo}
         />
       </PostFooter>
       {componenteComentario}
