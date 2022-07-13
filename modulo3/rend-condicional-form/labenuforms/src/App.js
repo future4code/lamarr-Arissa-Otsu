@@ -46,14 +46,15 @@ function App() {
 
   function IrParaProximaEtapa () {
     return (
-      setEtapa(etapa +1)
+        setEtapa(etapa + 1)
     )
   }
 
+
   return (
-    <Formulario >
+    <Formulario>
       <RenderizaEtapa/>
-      <button onClick={IrParaProximaEtapa}>Próxima etapa</button>
+      {etapa<=3 ? <button onClick={IrParaProximaEtapa}>Próxima etapa</button> : ""}
     </Formulario>
   );
 }

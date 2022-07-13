@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const SegundaEtapa = styled.div `
     text-align: center;
+    margin-top: 5vh;
     
     h1 {
         margin-bottom: 5vh;
@@ -13,6 +14,7 @@ const SegundaEtapa = styled.div `
         border-radius: 6px;
         text-align: center;
         height: 3vh;
+        width: 12vw;
     }
 
     select {
