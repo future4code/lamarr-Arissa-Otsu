@@ -1,5 +1,39 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+// Estilização
+
+const ListaUsuarios = styled.div `
+    
+    li {
+        color:black;
+        font-size: 3vh;
+        line-height: 6vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px black solid;
+        border-radius: 5px;
+        margin-left: 40vw;
+        margin-right: 40vw;
+        padding-left: 4vw;
+        padding-right: 4vw;
+        margin-bottom: 2vh;
+    }
+
+    button {
+    font-size: 2.5vh;
+    border-radius: 5px;
+    }
+
+    button:hover {
+        background-color: black;
+        color: white;
+    }
+
+`
 
 const ListarUsuarios = () => {
 
@@ -8,7 +42,7 @@ const ListarUsuarios = () => {
     const componenteLista = lista.map((usuario,index)=> {
         return (
             <div key={index}>
-                <div> {usuario.name} <button onClick={()=> deleteUser(usuario.id)}> x </button> </div>
+                <li> {usuario.name} <button onClick={()=> deleteUser(usuario.id)}> x </button> </li>
             </div>
         )
     })
@@ -28,9 +62,9 @@ const ListarUsuarios = () => {
         }
     }
 
-    // Get lista de usuários
+    // Listar usuários
 
-    const getAllUsers= () => {
+    const getAllUsers = () => {
         axios.get(url,header)
         .then ((response)=> {
             setLista(response.data)
@@ -42,7 +76,7 @@ const ListarUsuarios = () => {
     const deleteUser = (id) => {
         axios.delete(url + "/" + id, header)
         .then ( () => {
-            alert ("Usuário excluído.")
+            alert ("Usuário excluído com sucesso!")
             getAllUsers()
         })
         .catch(()=> {
@@ -50,51 +84,13 @@ const ListarUsuarios = () => {
         })
     }
 
-    // Criar usuário
-    
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-
-    const nameInput = (e) => {
-        setName(e.target.value)
-    }
-
-    const emailInput = (e) => {
-        setEmail(e.target.value)
-    }
-    const body = {
-        "name": name,
-        "email": email
-    }
-
-    const createUser = (e) => {
-        e.preventDefault()
-        axios.post(url,body,header)
-        .then (()=> {
-            alert ("Usuário adicionado!")
-            getAllUsers()
-            
-        })
-        .catch(()=> {
-            alert("Não foi possível adicionar o novo usuário.")
-        })
-    }
-
     return (
-        <>
-            <button> Trocar de tela </button>
-            <input type='text' placeholder='Nome do Usuário' onChange={nameInput}></input>
-            <input type='email' placeholder='E-mail' onChange={emailInput}></input>
-            <button onClick={createUser}> Adicionar </button>
+        <ListaUsuarios>
             <h1> Lista de usuários </h1>
-            {componenteLista}
-            <h2> Procurar usuário</h2>
-            <input type='text' placeholder='Digitar nome'></input>
-            <button > Salvar </button>
-        </>
+            <div>{componenteLista}</div>
+        </ListaUsuarios>
     )
-    }
-
+}
 
 
 export default ListarUsuarios;
