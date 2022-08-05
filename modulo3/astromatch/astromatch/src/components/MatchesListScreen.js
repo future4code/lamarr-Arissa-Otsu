@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components"
 import axios from "axios"
-import {AiFillDelete} from 'react-icons/ai'
+import {AiFillDelete, AiOutlineClear} from 'react-icons/ai'
+import {BiHomeHeart} from 'react-icons/bi'
+
 
 const Header = styled.header`
     display: flex;
@@ -12,10 +14,20 @@ const Header = styled.header`
     margin: auto;
     max-width: 30%;
     background-color: yellow;
+    border: black solid 2px;
 
     button {
-        background-color: none;
-        color: red;
+        background-color: transparent;
+        color: black;
+        border: none;
+        font-size: 1em;
+    }
+
+    button:hover {
+        background-color: transparent;
+        color: darksalmon;
+        border: none;
+        font-size: 1em;
     }
 `
 
@@ -33,12 +45,34 @@ const List = styled.div`
         margin-left: 2vw;
     }
 `
-function ShowMatchesList () {
+
+const Main = styled.div`
+    background-color: transparent;
+    max-width: 30%;
+    height: fit-content;
+    min-height: 70vh;
+    text-align: center;
+    margin: auto;
+    border: black solid 2px;
+    padding-top: 2vh;
+`
+const ClearButton = styled.div`
+    display: fixed; 
+    margin-top: 6vh;
+    text-align: center;
+    button {
+        font-size: 1em;
+    }
+
+`
+
+function ShowMatchesList (props) {
     
     const [list, setList] = useState([])
+    const {switchPages} = props
         
     const getMatches = () => {
-        const urlMatches = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/a/matches"
+        const urlMatches = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ay/matches"
 
         axios.get(urlMatches)
         .then((response) => {
@@ -65,7 +99,7 @@ function ShowMatchesList () {
     })
 
     const clearList = () => {
-        const urlClear = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/a/clear'
+        const urlClear = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ay/clear'
         
         if (window.confirm(`Are you sure you want to clear your matches list?`)) {
             axios.put(urlClear)
@@ -83,12 +117,16 @@ function ShowMatchesList () {
     return (
         <>  
             <Header>
-                <h1> AstroMatch </h1>
+                <h1> AstroMatch <button onClick={props.switchPages}> <BiHomeHeart/> </button></h1>
             </Header>
-
-            <h2> Lista de Matches </h2>
-            {matchesList}
-            <button onClick={clearList}> <AiFillDelete/> </button>
+            <Main>
+                
+                {matchesList}
+                
+            </Main>
+            <ClearButton>
+                <button onClick={clearList}> <AiOutlineClear/> Clear List </button>
+            </ClearButton>
         </>
     )
 }

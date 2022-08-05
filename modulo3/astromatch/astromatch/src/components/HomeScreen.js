@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components"
 import axios from "axios"
 import {BsFillPersonLinesFill} from 'react-icons/bs'
-import {FcLike} from 'react-icons/fc'
+import {IoMdHeartDislike, IoMdHeart, IoHeart, IoHeartCircleOutline} from 'react-icons/io'
 import {TiDelete} from 'react-icons/ti'
+import {RiHeartAddFill, RiUserHeartLine} from 'react-icons/ri'
 
 const Home = styled.div `
     text-align: center;
@@ -18,21 +19,32 @@ const Header = styled.header`
     margin: auto;
     max-width: 30%;
     background-color: yellow;
+    border: black solid 2px;
 
     button {
-        background-color: none;
-        color: red;
+        background-color: transparent;
+        color: black;
+        border: none;
+        font-size: 1em;
+    }
+
+    button:hover {
+        background-color: transparent;
+        color: darksalmon;
+        border: none;
+        font-size: 1em;
     }
 `
 
 
 const Card = styled.div `
 
-    background-color: gray;
+    background-color: transparent;
     max-width: 30%;
     height: 70vh;
     text-align: center;
     margin: auto;
+    border: black solid 2px;
 
     img {
         max-width: 100%;
@@ -51,25 +63,49 @@ const Card = styled.div `
 const Buttons = styled.button `
 
     border: none;
-    background-color: white;
+    background-color: transparent;
     margin: auto;
     display: flex;
     flex-direction: row;
     max-width: 30%;
 
     button {
-        border-radius: 50%;
+        border-radius: 100%;
+        border: none;
         width: 5vw;
         height: 5vw;
         margin: 2vw;
+        background-color: transparent;
+    }
+
+    .like {
+        color: red;
+        font-size: 4em;
+    }
+
+    .like:hover {
+        font-size: 5em;
+    }
+
+    .dislike {
+        color: green;
+        font-size: 4em;
+    }
+
+    .dislike:hover {
+        font-size: 5em;
     }
 `
+
+    
+
 function ShowProfileCard (props) {
 
     const [profile, setProfile] = useState ([])
+    const {switchPages} = props
     
     const getProfile = () => {
-        const urlProfile = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/a/person"
+        const urlProfile = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ay/person"
         axios.get(urlProfile)
         .then((response) => {
             console.log(response.data.profile)
@@ -87,7 +123,7 @@ function ShowProfileCard (props) {
 
     const choosePerson = (id,choice) => {
 
-        const urlChoosePerson = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/a/choose-person"
+        const urlChoosePerson = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ay/choose-person"
 
         const body = {
             "id": id,
@@ -108,7 +144,7 @@ function ShowProfileCard (props) {
     return (
         <Home>
             <Header>
-                <h1> AstroMatch  <button > <BsFillPersonLinesFill/> </button> </h1>
+                <h1> AstroMatch  <button onClick={props.switchPages}> <RiUserHeartLine/> </button> </h1>
             </Header>
             
             <Card>
@@ -121,8 +157,8 @@ function ShowProfileCard (props) {
             </Card>
             
             <Buttons>
-                <button onClick={() => choosePerson(profile.id, true)}><FcLike/></button>
-                <button onClick={() => choosePerson(profile.id, false)}> <TiDelete/> </button>
+                <button className="dislike" onClick={() => choosePerson(profile.id, false)}> <IoMdHeartDislike/> </button>
+                <button className="like" onClick={() => choosePerson(profile.id, true)}><IoMdHeart/></button>
             </Buttons>
         </Home>
     )

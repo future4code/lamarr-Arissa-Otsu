@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import ShowProfileCard from "./components/HomeScreen";
 import ShowMatchesList from "./components/MatchesListScreen";
+
+const Page = styled.div `
+  
+`
 
 function App() {
 
@@ -9,13 +14,17 @@ function App() {
   const renderPage = () => {
     switch(page) {
       case "homepage":
-        return <ShowProfileCard/>
+        return <ShowProfileCard
+        switchPages = {switchPages}
+        />
       case "matcheslistpage":
-        return <ShowMatchesList/>
+        return <ShowMatchesList
+        switchPages = {switchPages}
+        />
     }
   }
 
-  function switchPage () {
+  function switchPages () {
     if (page==="homepage") {
       return setPage("matcheslistpage")
     } else {
@@ -23,11 +32,11 @@ function App() {
     }
   }
 
-  return (
-    <div className="App">
-      {renderPage()}
 
-    </div>
+  return (
+    <Page>
+      {renderPage()}
+    </Page>
   );
 }
 
