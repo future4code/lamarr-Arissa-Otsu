@@ -4,7 +4,7 @@ import ShowProfileCard from "./components/HomeScreen";
 import ShowMatchesList from "./components/MatchesListScreen";
 
 const Page = styled.div `
-  
+  margin-top: 1vh;
 `
 
 function App() {

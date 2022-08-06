@@ -1,33 +1,52 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components"
 import axios from "axios"
-import {AiFillDelete, AiOutlineClear} from 'react-icons/ai'
+import { AiOutlineClear} from 'react-icons/ai'
 import {BiHomeHeart} from 'react-icons/bi'
+import {GiOppositeHearts} from 'react-icons/gi'
 
 
 const Header = styled.header`
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     align-content: center;
     text-align: center;
     margin: auto;
     max-width: 30%;
-    background-color: yellow;
-    border: black solid 2px;
+    background-color: pink;
+    border: #ff0084 solid 3px;
+    height: 10vh;
+    font-family: 'Cinzel', serif;
+
+    h1 {
+        color: #ff0084;
+    }
+
+    p {
+        background-color: transparent;
+        color: #ff0084;
+        border: none;
+        font-size: 2em;
+    }
+
+    span {
+        color: #cc006a;
+    }
 
     button {
         background-color: transparent;
-        color: black;
+        color: #ff0084;
         border: none;
-        font-size: 1em;
+        font-size: 2em;
     }
 
     button:hover {
         background-color: transparent;
-        color: darksalmon;
+        color: #cc006a;
         border: none;
-        font-size: 1em;
+        font-size: 2em;
     }
 `
 
@@ -36,6 +55,7 @@ const List = styled.div`
     flex-direction: row;
     align-items: center;
     
+    
     img {
         border-radius: 50%;
         height: 10vh;;
@@ -43,6 +63,12 @@ const List = styled.div`
         margin-bottom: 2vh;
         margin-right: 2vw;
         margin-left: 2vw;
+        border: 1px solid #cc006a;
+    }
+
+    h4 {
+        margin-bottom: 5vh;
+        color: #cc006a
     }
 `
 
@@ -50,10 +76,12 @@ const Main = styled.div`
     background-color: transparent;
     max-width: 30%;
     height: fit-content;
-    min-height: 70vh;
+    min-height: 65vh;
     text-align: center;
     margin: auto;
-    border: black solid 2px;
+    border-bottom: #ff0084 solid 3px;
+    border-left: #ff0084 solid 3px;
+    border-right: #ff0084 solid 3px;
     padding-top: 2vh;
 `
 const ClearButton = styled.div`
@@ -69,10 +97,9 @@ const ClearButton = styled.div`
 function ShowMatchesList (props) {
     
     const [list, setList] = useState([])
-    const {switchPages} = props
-        
+
     const getMatches = () => {
-        const urlMatches = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ay/matches"
+        const urlMatches = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ayi/matches"
 
         axios.get(urlMatches)
         .then((response) => {
@@ -93,13 +120,13 @@ function ShowMatchesList (props) {
         return (
             <List key={person.id}>
                 <img src={person.photo} alt={person.photo_alt}/>
-                <p> {person.name} </p>
+                <h4> {person.name} </h4>
             </List>
         )
     })
 
     const clearList = () => {
-        const urlClear = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ay/clear'
+        const urlClear = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ayi/clear'
         
         if (window.confirm(`Are you sure you want to clear your matches list?`)) {
             axios.put(urlClear)
@@ -117,12 +144,12 @@ function ShowMatchesList (props) {
     return (
         <>  
             <Header>
-                <h1> AstroMatch <button onClick={props.switchPages}> <BiHomeHeart/> </button></h1>
+                <p><GiOppositeHearts/></p>
+                <h1>Astro<span>match</span></h1>
+                <button onClick={props.switchPages}> <BiHomeHeart/> </button>
             </Header>
             <Main>
-                
                 {matchesList}
-                
             </Main>
             <ClearButton>
                 <button onClick={clearList}> <AiOutlineClear/> Clear List </button>
