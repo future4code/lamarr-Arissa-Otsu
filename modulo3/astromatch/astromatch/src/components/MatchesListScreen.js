@@ -84,10 +84,10 @@ const Main = styled.div`
     border-right: #ff0084 solid 3px;
     padding-top: 2vh;
 `
-const ClearButton = styled.div`
-    display: fixed; 
+const ClearButton = styled.div` 
     margin-top: 6vh;
     text-align: center;
+    
     button {
         font-size: 1em;
     }
