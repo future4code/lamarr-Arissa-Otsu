@@ -4,8 +4,14 @@ import RoutesLabeX from './components/Routes';
 
 function App() {
   return (
-    <div className="App">
+    <div>
+        <header>
+          
+        </header>
         <RoutesLabeX/>
+        <footer>
+
+        </footer>
     </div>
   );
 }
