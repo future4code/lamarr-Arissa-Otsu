@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components"
-import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
 import { base_url } from '../../constants/constants'
 import useRequestData from "../../hook/useRequestData";
@@ -13,7 +11,7 @@ function ShowListTripsPage () {
     const [tripsList, isLoadingTripsList, errorTripsList] = useRequestData(`${base_url}trips`)
     const navigate = useNavigate()
     const renderTripsList = tripsList&&tripsList.trips.map((trip) => {
-        return <CardContainer>
+        return <CardContainer key={trip.id}> 
         <p> <b>Nome: </b> {trip.name} </p> 
         <p> <b>Descrição: </b> {trip.description} </p>
         <p> <b>Planeta: </b> {trip.planet} </p>
