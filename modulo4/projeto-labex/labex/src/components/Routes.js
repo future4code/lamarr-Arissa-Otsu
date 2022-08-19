@@ -1,12 +1,12 @@
 import React from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import HomePage from '../pages/HomePage'
+import HomePage from '../pages/HomePage/HomePage'
 import ListTripsPage from '../pages/ListTripsPage/ListTripsPage'
 import ApplicationFormPage from '../pages/ApplicationFormPage/ApplicationFormPage'
 import LoginPage from "../pages/LoginPage/LoginPage"
-import AdminHomePage from '../pages/AdminHomePage'
+import AdminHomePage from '../pages/AdminHomePage/AdminHomePage'
 import CreateTripPage from '../pages/CreateTripPage/CreateTripPage'
-import TripDetailsPage from '../pages/TripDetailsPage'
+import TripDetailsPage from '../pages/TripDetailsPage/TripDetailsPage'
 
 
 const RoutesLabeX = () => {

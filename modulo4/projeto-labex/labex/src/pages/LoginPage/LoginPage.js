@@ -20,13 +20,14 @@ function ShowLoginPage () {
         
         axios.post(`${base_url}login`, body)
         .then((response) => {
-            console.log(response.data)
-            alert("Login realizado.")
+            localStorage.setItem("token", response.data.token)
+            console.log("Login feito com sucesso")
+            navigate("/admin/trips/list")
             clearInputs()
         })
         .catch((error) =>{
             console.log(error.message)
-            alert("Algo deu errado.")
+            alert("Usuário ou senha não encontrados.")
         })
         
     }
@@ -37,6 +38,7 @@ function ShowLoginPage () {
             <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar </button>
             <button onClick={() => MyRoutes.goToAdminHomePage(navigate)}> Login </button>
             <form onSubmit={login}>
+                <label htmlFor="email"> E-mail:</label>
                 <input
                     id="email"
                     name="email"
@@ -46,6 +48,7 @@ function ShowLoginPage () {
                     type="email"
                     required
                 />
+                <label htmlFor="password"> Senha:</label>
                 <input
                     id="password"
                     name="password"
