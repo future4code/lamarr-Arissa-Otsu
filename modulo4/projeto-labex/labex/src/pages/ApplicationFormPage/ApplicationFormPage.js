@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useParams } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
 import useForm from "../../hook/useForm";
 import { base_url } from '../../constants/constants'
-import {Form} from "./style";
+import {Buttons, Form, Header} from "./style";
+import useRequestData from "../../hook/useRequestData";
 
 function ShowApplicationFormPage () {
 
+    
     const navigate = useNavigate()
     const [form, onChange, clearInputs] = useForm({name:"", age:"", applicationText:"", profession:"", country:"", id:""})
+    /* const idParam = useParams(); */
+
+    const [tripsList] = useRequestData(`${base_url}trips`)
+
+    const allTrips = tripsList&&tripsList.trips.map((trip) => {
+        return <option key={trip.id}>{trip.name}</option>
+    })
 
     const sendTripRequest = (event) => {
 
@@ -23,7 +32,7 @@ function ShowApplicationFormPage () {
 
         event.preventDefault()
 
-        axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/arissa/trips/MNllruNrr9j7ODYXoyOw/apply", body)
+        axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/arissa/trips/MNllruNrr9j7ODYXoyOw/apply", body) //NECESSÁRIO MUDAR ID
         .then((response) => {
             console.log(response.data)
             alert("Inscrição realizada com sucesso!")
@@ -36,16 +45,19 @@ function ShowApplicationFormPage () {
     }
 
     return (
-        <>
-            <h1> Formulário de aplicação </h1>
-            <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
-            <button> Enviar </button>
+        <>  
+            <Header>
+                <img alt="Desenho de um astronauta sentado em uma lua" src="https://img.freepik.com/vetores-premium/astronauta-sentado-na-lua-icon-ilustracao-personagem-de-desenho-animado-do-mascote-do-astronauta-conceito-de-icone-de-ciencia-isolado_138676-976.jpg"></img>
+                <h1> LabeX </h1>
+            </Header>
+
             <Form onSubmit={sendTripRequest}>
+                <h2> Formulário de aplicação </h2>
                 <label htmlFor="name"> Nome:</label>
                 <input //MINIMO DE 3 LETRAS?
                     id="name"
                     name="name"
-                    placeholder="Nome"
+                    placeholder="Insira seu nome"
                     value={form.name}
                     onChange={onChange}
                     type="text"
@@ -56,7 +68,7 @@ function ShowApplicationFormPage () {
                 <input
                     id="age"
                     name="age"
-                    placeholder="Idade"
+                    placeholder="Insira sua idade"
                     value={form.age}
                     onChange={onChange}
                     type="number"
@@ -67,7 +79,7 @@ function ShowApplicationFormPage () {
                 <input
                     id="applicationText"
                     name="applicationText"
-                    placeholder="Texto"
+                    placeholder="Escreva um pequeno texto detalhando o porquê você deseja ir para o espaço"
                     value={form.applicationText}
                     onChange={onChange}
                     type="text"
@@ -78,16 +90,16 @@ function ShowApplicationFormPage () {
                 <input
                     id="profession"
                     name="profession"
-                    placeholder="Profissão"
+                    placeholder="Insira sua profissão"
                     value={form.profession}
                     onChange={onChange}
                     type="text"
                     minLength={10}
                     required
                 />
-                <label htmlFor="country"> País </label>
+                <label htmlFor="country"> País: </label>
                 <select name="country" id="country" value={form.country} onChange={onChange} required>
-                    <option value="" label="Selecione um país " selected="selected">Selecione um país</option>
+                    <option value="" label="Insira o país onde mora" selected="selected">Selecione um país</option>
                     <option value="Afeganistão">Afeganistão</option>
                     <option value="África do Sul">África do Sul</option>
                     <option value="Albânia">Albânia</option>
@@ -340,17 +352,15 @@ function ShowApplicationFormPage () {
                     <option value="Zâmbia">Zâmbia</option>
                 </select>
                 <label htmlFor="id"> Viagem: </label>
-                <input //id da viagem que o candidato quer ir, o usuário deve ver um dropdown com o seguinte valor: `Nome da Viagem - Planeta` e ao selecionar o id da viagem deve ser enviado ao backend.
-                    id="id"
-                    name="id"
-                    placeholder="Viagem"
-                    value={form.id}
-                    onChange={onChange}
-                    type="text"
-                    required
-                />
-
-                <button> Enviar </button>
+                <select id="id" name="id" value={form.id} onChange={onChange} required> 
+                    {allTrips}
+                </select>
+            
+        
+                <Buttons>
+                    <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
+                    <button> Enviar </button>
+                </Buttons>
             </Form>
         </>
     )

@@ -1,5 +1,23 @@
 import styled from 'styled-components'
 
+export const Header = styled.header`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content:center;
+    align-items: center;
+    background-color: #96c6fe;
+    margin-bottom: 2vh;
+
+    h1 {
+        color: #2a3959;
+    }
+
+    img {
+        width: 10vw;
+    }
+    
+`
 export const CardContainer = styled.div `
     display: flex;
     flex-direction: column;
@@ -18,8 +36,16 @@ export const CardContainer = styled.div `
     }
 `
 export const List = styled.div`
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    flex-direction: column;
+    width: 70vw;
+    border-radius: 2em;
+    border: solid 0.2em orange;
     
-    h1 {
+    h2 {
         text-align:center;
     }
     
@@ -33,11 +59,23 @@ export const LoadingIcon = styled.div `
 export const Buttons = styled.div `
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin:auto;
+    align-items: center;
+    justify-content: space-evenly;
     margin-bottom: 1em;
-    width: 20vw;
+    margin-top: 1em;
+
+    button {
+        width: 10vw;
+        border-radius: 0.5em;
+        border-color: black;
+        height: 2em;
+    }
+
+    button:hover {
+        background-color: orange;
+    }
 `
 export const Loading = styled.div `
     text-align: center;
 `
+

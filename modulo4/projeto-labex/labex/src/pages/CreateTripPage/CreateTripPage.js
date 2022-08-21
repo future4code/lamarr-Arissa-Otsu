@@ -6,6 +6,7 @@ import * as MyRoutes from '../../components/Coordinator'
 import { base_url } from '../../constants/constants'
 import useForm from "../../hook/useForm";
 import useProtectedPage from "../../hook/useProtectedPage";
+import {Buttons, Form, Header} from './style'
 
 function ShowCreateTripPage () {
 
@@ -15,11 +16,13 @@ function ShowCreateTripPage () {
 
     const createTrip = (event) => {
 
+        const token = localStorage.getItem("token")
+
         const header = {
             headers:{
-                
+                auth: token
+            }
         }
-    }
 
         const body = {
             name: form.name,
@@ -31,7 +34,7 @@ function ShowCreateTripPage () {
 
         event.preventDefault()
 
-        axios.post(`${base_url}trips`, header, body)
+        axios.post(`${base_url}trips`, body, header)
         .then((response) => {
             console.log(response.data)
             alert("Viagem criada.")
@@ -45,10 +48,14 @@ function ShowCreateTripPage () {
 
     return (
         <>
-            <h1> Criação de Viagem </h1>
-            <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
-            <button> Criar </button>
-            <form onSubmit={createTrip}>
+            <Header>
+                <img alt="Desenho de um astronauta sentado em uma lua" src="https://img.freepik.com/vetores-premium/astronauta-sentado-na-lua-icon-ilustracao-personagem-de-desenho-animado-do-mascote-do-astronauta-conceito-de-icone-de-ciencia-isolado_138676-976.jpg"></img>
+                <h1> Labe  </h1>
+            </Header>
+            
+            
+            <Form onSubmit={createTrip}>
+                <h2> Criação de Viagem </h2>
                 <label htmlFor="name"> Nome: </label>
                 <input //MÍNIMO DE 5 LETRAS????
                     id="name"
@@ -104,8 +111,11 @@ function ShowCreateTripPage () {
                     min="50"
                     required
                 />
-                <button> Enviar </button>
-            </form>
+                <Buttons>
+                    <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
+                    <button> Criar </button>
+                </Buttons>
+            </Form>
         </>
     )
 }

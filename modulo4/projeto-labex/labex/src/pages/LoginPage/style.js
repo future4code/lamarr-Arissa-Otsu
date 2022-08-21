@@ -18,12 +18,10 @@ export const Header = styled.header`
     }
     
 `
-
-
-export const Form = styled.form `
+export const LoginForm = styled.form `
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 35%;
     margin: auto;
     background-color: #FFE2BB;
     border: solid 0.2em orange;
@@ -38,32 +36,34 @@ export const Form = styled.form `
     }
 
     input {
-        margin-bottom: 1em;
+        margin-bottom: 2em;
         border-radius: 0.5em;
         border-color: black;
         height: 1.5em;
         padding-left:1em;
+        width: 25em;
     }
 
-    select {
-        margin-bottom: 1em;
-        border-radius: 0.5em;
-        border-color: black;
-        height: 2em;
-        padding-left:1em;
-        color: grey;
+`
+export const Input = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+
+    label {
+        margin-right: 1em;
     }
 `
+
 export const Buttons = styled.div `
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 2em;
 
     button {
-        width: 10vw;
+        width: 5vw;
         border-radius: 0.5em;
         border-color: black;
         height: 2em;

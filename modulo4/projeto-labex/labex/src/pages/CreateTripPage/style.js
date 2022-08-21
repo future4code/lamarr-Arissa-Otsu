@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Header = styled.header`
     display: flex;
@@ -18,7 +18,6 @@ export const Header = styled.header`
     }
     
 `
-
 
 export const Form = styled.form `
     display: flex;
@@ -43,6 +42,7 @@ export const Form = styled.form `
         border-color: black;
         height: 1.5em;
         padding-left:1em;
+        color:gray;
     }
 
     select {
