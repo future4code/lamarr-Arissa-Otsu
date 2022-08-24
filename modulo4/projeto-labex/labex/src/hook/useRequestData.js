@@ -7,6 +7,10 @@ const useRequestData = (url) => {
     const [error, setError] = useState(undefined)
 
     useEffect (() => {
+        getData()
+    }, [])
+
+    const getData = () => {
         setIsLoading(true)
         axios.get(url)
         .then((response) => {
@@ -20,8 +24,8 @@ const useRequestData = (url) => {
             setError(err)
             alert("Algo deu errado.")
         })
-    }, [])
-    return [data, isLoading, error]
+    }
+    return [data, isLoading, error, getData]
 }
 
 export default useRequestData

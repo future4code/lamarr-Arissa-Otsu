@@ -26,3 +26,7 @@ export const goToAdminHomePage = (navigate) => {
 export const goToTripDetailsPage = (navigate) => {
     navigate("/admin/trips/:id")
 }
+
+export const goToHomePage = (navigate) => {
+    navigate("/")
+}

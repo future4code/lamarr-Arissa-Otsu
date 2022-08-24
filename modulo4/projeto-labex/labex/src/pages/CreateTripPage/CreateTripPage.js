@@ -69,7 +69,7 @@ function ShowCreateTripPage () {
                 />
                 <label htmlFor="planet"> Planeta: </label>
                 <select id="planet" name="planet" value={form.planet} onChange={onChange} required>
-                    <option value="" label="Selecione um planeta " selected="selected">Selecione um planeta</option>
+                    <option value="" label="Selecione um planeta ">Selecione um planeta</option>
                     <option value="Mercúrio"> Mercúrio </option>
                     <option value="Vênus"> Vênus </option>
                     <option value="Terra"> Terra </option>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useParams } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
 import useForm from "../../hook/useForm";
@@ -12,12 +12,12 @@ function ShowApplicationFormPage () {
     
     const navigate = useNavigate()
     const [form, onChange, clearInputs] = useForm({name:"", age:"", applicationText:"", profession:"", country:"", id:""})
-    /* const idParam = useParams(); */
+    const param = useParams();
 
     const [tripsList] = useRequestData(`${base_url}trips`)
 
     const allTrips = tripsList&&tripsList.trips.map((trip) => {
-        return <option key={trip.id}>{trip.name}</option>
+        return <option key={trip.id}> {trip.name} </option>
     })
 
     const sendTripRequest = (event) => {
@@ -32,7 +32,7 @@ function ShowApplicationFormPage () {
 
         event.preventDefault()
 
-        axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/arissa/trips/MNllruNrr9j7ODYXoyOw/apply", body) //NECESSÁRIO MUDAR ID
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/arissa/trips/${param.id}/apply`, body) //NECESSÁRIO MUDAR ID
         .then((response) => {
             console.log(response.data)
             alert("Inscrição realizada com sucesso!")
@@ -99,7 +99,7 @@ function ShowApplicationFormPage () {
                 />
                 <label htmlFor="country"> País: </label>
                 <select name="country" id="country" value={form.country} onChange={onChange} required>
-                    <option value="" label="Insira o país onde mora" selected="selected">Selecione um país</option>
+                    <option value="" label="Insira o país onde mora"></option>
                     <option value="Afeganistão">Afeganistão</option>
                     <option value="África do Sul">África do Sul</option>
                     <option value="Albânia">Albânia</option>
@@ -353,6 +353,7 @@ function ShowApplicationFormPage () {
                 </select>
                 <label htmlFor="id"> Viagem: </label>
                 <select id="id" name="id" value={form.id} onChange={onChange} required> 
+                    <option value="" label="Escolha uma viagem"></option>
                     {allTrips}
                 </select>
             
