@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios"
 import { base_url } from '../../constants/constants'
 import * as MyRoutes from '../../components/Coordinator'
@@ -9,8 +9,14 @@ import {Header} from './style'
 function ShowTripDetailsPage () {
     useProtectedPage()
     const navigate = useNavigate()
+    const pathParam = useParams();
+    
 
-    useEffect(() => {
+    useEffect (() => {
+        getTripDetails()
+    }, [])
+
+    const getTripDetails = () => {
         const token = localStorage.getItem("token")
 
         const header = {
@@ -18,7 +24,7 @@ function ShowTripDetailsPage () {
                 auth: token
             }
         }
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/arissa/trip/MNllruNrr9j7ODYXoyOw", header) //necessário colocar id
+        axios.get(`${base_url}trip/${pathParam.id}`, header) 
         .then((response) => {
             console.log(response.data)
             console.log("Successo")
@@ -27,7 +33,9 @@ function ShowTripDetailsPage () {
             console.log(error.message)
             alert("Algo deu errado")
         })
-    }, [])
+    }
+
+
 
     return (
         <>  

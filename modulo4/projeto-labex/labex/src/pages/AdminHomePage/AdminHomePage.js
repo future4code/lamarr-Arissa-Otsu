@@ -10,6 +10,7 @@ import useRequestData from "../../hook/useRequestData";
 import Loading from 'react-loading'
 
 function ShowAdminHomePage () {
+
     useProtectedPage()
 
     const navigate = useNavigate()
@@ -19,7 +20,8 @@ function ShowAdminHomePage () {
         navigate("/login");
     };
 
-    
+    const [tripsList, isLoadingTripsList, errorTripsList, getTrips] = useRequestData(`${base_url}trips`)
+
     const deleteTrip = (id, name) => {
 
         const token = localStorage.getItem("token")
@@ -35,6 +37,7 @@ function ShowAdminHomePage () {
             .then((response) => {
                 console.log(response.data)
                 alert(`Viagem ${name} deletada`)
+                getTrips()
             })
             .catch((error) => {
                 console.log(error.message)
@@ -43,11 +46,8 @@ function ShowAdminHomePage () {
         }
     }
 
-    
-    const [tripsList, isLoadingTripsList, errorTripsList, getTrips] = useRequestData(`${base_url}trips`)
-
     const renderAllTrips = tripsList&&tripsList.trips.map((trip) => {
-        return <ListItem key={trip.id} >
+        return <ListItem key={trip.id} onClick={() => MyRoutes.goToTripDetailsPage(navigate, trip.id)}>
                 <span>  {trip.name} </span>
                 <button  onClick={() => deleteTrip(trip.id, trip.name)}> X </button>
             </ListItem>
@@ -65,7 +65,7 @@ function ShowAdminHomePage () {
                 <Buttons>
                     <button onClick={() => MyRoutes.goToCreateTripPage(navigate)}> Criar Viagem </button>
                     <button onClick={() => logout()}> Logout </button>
-                    <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
+                    <button onClick={() => MyRoutes.goToHomePage(navigate)}> Voltar para Home </button>
                 </Buttons>
             </AdminHomeContainer>
             <LoadingIcon>

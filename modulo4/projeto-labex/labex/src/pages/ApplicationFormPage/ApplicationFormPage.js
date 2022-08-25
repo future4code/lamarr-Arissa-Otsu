@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
 import useForm from "../../hook/useForm";
@@ -12,13 +12,13 @@ function ShowApplicationFormPage () {
     
     const navigate = useNavigate()
     const [form, onChange, clearInputs] = useForm({name:"", age:"", applicationText:"", profession:"", country:"", id:""})
-    const param = useParams();
 
     const [tripsList] = useRequestData(`${base_url}trips`)
-
+    
     const allTrips = tripsList&&tripsList.trips.map((trip) => {
-        return <option key={trip.id}> {trip.name} </option>
+        return <option key={trip.id} value={trip.name}> {trip.name} - {trip.planet} </option>
     })
+    
 
     const sendTripRequest = (event) => {
 
@@ -32,7 +32,7 @@ function ShowApplicationFormPage () {
 
         event.preventDefault()
 
-        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/arissa/trips/${param.id}/apply`, body) //NECESSÁRIO MUDAR ID
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/arissa/trips/${form.id}/apply`, body) //NECESSÁRIO MUDAR ID
         .then((response) => {
             console.log(response.data)
             alert("Inscrição realizada com sucesso!")

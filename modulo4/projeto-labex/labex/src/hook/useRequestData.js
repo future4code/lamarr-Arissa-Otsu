@@ -14,7 +14,7 @@ const useRequestData = (url) => {
         setIsLoading(true)
         axios.get(url)
         .then((response) => {
-            console.log(response.data)
+            /* console.log(response.data) */
             setIsLoading(false)
             setData(response.data)
         })
