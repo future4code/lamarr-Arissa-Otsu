@@ -47,9 +47,10 @@ function ShowAdminHomePage () {
     }
 
     const renderAllTrips = tripsList&&tripsList.trips.map((trip) => {
-        return <ListItem key={trip.id} onClick={() => MyRoutes.goToTripDetailsPage(navigate, trip.id)}>
-                <span>  {trip.name} </span>
-                <button  onClick={() => deleteTrip(trip.id, trip.name)}> X </button>
+        return <ListItem key={trip.id} >
+                <span >  {trip.name} </span>
+                <button onClick={() => MyRoutes.goToTripDetailsPage(navigate, trip.id)}> Detalhes </button>
+                <button onClick={() => deleteTrip(trip.id, trip.name)}> X </button>
             </ListItem>
     })
 
@@ -63,9 +64,9 @@ function ShowAdminHomePage () {
             <AdminHomeContainer>
                 <h2> Painel Administrativo </h2>
                 <Buttons>
-                    <button onClick={() => MyRoutes.goToCreateTripPage(navigate)}> Criar Viagem </button>
-                    <button onClick={() => logout()}> Logout </button>
-                    <button onClick={() => MyRoutes.goToHomePage(navigate)}> Voltar para Home </button>
+                    <button type='button' onClick={() => MyRoutes.goToCreateTripPage(navigate)}> Criar Viagem </button>
+                    <button type='button' onClick={() => logout()}> Logout </button>
+                    <button type='button' onClick={() => MyRoutes.goToHomePage(navigate)}> Voltar para Home </button>
                 </Buttons>
             </AdminHomeContainer>
             <LoadingIcon>

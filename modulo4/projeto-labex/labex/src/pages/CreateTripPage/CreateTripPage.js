@@ -14,6 +14,15 @@ function ShowCreateTripPage () {
     const navigate = useNavigate()
     const [form, onChange, clearInputs] = useForm({name:"", planet:"", date:"", description:"", durationInDays:""})
 
+    const date = new Date();
+
+/*     const day = String(date.getDate()).padStart(2, '0');
+
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+
+    const year = date.getFullYear(); */
+
+
     const createTrip = (event) => {
 
         const token = localStorage.getItem("token")
@@ -87,7 +96,7 @@ function ShowCreateTripPage () {
                     value={form.date}
                     onChange={onChange}
                     type="date"
-                    min="2022-08-15" //NECESSÁRIO CORRIGIR!!!
+                    min={date.toISOString().substring(0,10)} //NECESSÁRIO CORRIGIR!!!
                     required
                 />
                 <label htmlFor="description"> Descrição </label>
@@ -112,7 +121,7 @@ function ShowCreateTripPage () {
                     required
                 />
                 <Buttons>
-                    <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
+                    <button type='button' onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
                     <button> Criar </button>
                 </Buttons>
             </Form>

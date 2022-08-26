@@ -8,15 +8,21 @@ import { CardContainer, List, Buttons, LoadingIcon, Header} from "./style";
 
 function ShowListTripsPage () {
 
+    function changeDate (date) {
+        return date.split('-').reverse().join('/')
+    }
+
     const [tripsList, isLoadingTripsList, errorTripsList] = useRequestData(`${base_url}trips`)
     const navigate = useNavigate()
+    
     const renderTripsList = tripsList&&tripsList.trips.map((trip) => {
+        const newDate = changeDate(trip.date)
         return <CardContainer key={trip.id}> 
         <p> <b>Nome: </b> {trip.name} </p> 
         <p> <b>Descrição: </b> {trip.description} </p>
         <p> <b>Planeta: </b> {trip.planet} </p>
         <p> <b>Duração: </b> {trip.durationInDays} dias </p>
-        <p> <b>Data: </b> {trip.date} </p>
+        <p> <b>Data: </b> {newDate} </p>
         </CardContainer> 
     })
     
@@ -36,8 +42,8 @@ function ShowListTripsPage () {
                 {!isLoadingTripsList && !tripsList && errorTripsList}
 
                 <Buttons>
-                    <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
-                    <button onClick={() => MyRoutes.goToApplicationFormPage(navigate)}> Inscreva-se</button>
+                    <button type='button' onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
+                    <button type='button' onClick={() => MyRoutes.goToApplicationFormPage(navigate)}> Inscreva-se</button>
                 </Buttons>
             </List>
         </>

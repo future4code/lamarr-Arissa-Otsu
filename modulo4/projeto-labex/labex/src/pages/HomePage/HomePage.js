@@ -17,8 +17,8 @@ function ShowHomePage () {
             </Header>
             <HomeContainer>
                 <Buttons>
-                    <button onClick={() => MyRoutes.goToLoginPage(navigate)}> Área Administrativa </button>
-                    <button onClick={() => MyRoutes.goToListTripsPage(navigate)}> Lista de Viagens </button>
+                    <button type='button' onClick={() => MyRoutes.goToLoginPage(navigate)}> Área Administrativa </button>
+                    <button type='button' onClick={() => MyRoutes.goToListTripsPage(navigate)}> Lista de Viagens </button>
                 </Buttons>
             </HomeContainer>
         </>

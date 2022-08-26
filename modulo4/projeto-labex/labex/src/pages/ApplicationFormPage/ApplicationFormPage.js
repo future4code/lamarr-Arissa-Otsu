@@ -16,7 +16,7 @@ function ShowApplicationFormPage () {
     const [tripsList] = useRequestData(`${base_url}trips`)
     
     const allTrips = tripsList&&tripsList.trips.map((trip) => {
-        return <option key={trip.id} value={trip.name}> {trip.name} - {trip.planet} </option>
+        return <option key={trip.id} value={trip.id}> {trip.name} - {trip.planet} </option>
     })
     
 
@@ -32,7 +32,7 @@ function ShowApplicationFormPage () {
 
         event.preventDefault()
 
-        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/arissa/trips/${form.id}/apply`, body) //NECESSÁRIO MUDAR ID
+        axios.post(`${base_url}trips/${form.id}/apply`, body) //NECESSÁRIO MUDAR ID
         .then((response) => {
             console.log(response.data)
             alert("Inscrição realizada com sucesso!")
@@ -359,7 +359,7 @@ function ShowApplicationFormPage () {
             
         
                 <Buttons>
-                    <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
+                    <button type='button' onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar</button>
                     <button> Enviar </button>
                 </Buttons>
             </Form>
