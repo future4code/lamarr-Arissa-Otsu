@@ -73,3 +73,14 @@ export const Buttons = styled.div `
         background-color: orange;
     }
 `
+
+export const Footer = styled.footer`
+    background-color: #96c6fe;
+    bottom: 0;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+`

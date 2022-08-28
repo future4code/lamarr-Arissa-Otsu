@@ -58,3 +58,13 @@ export const HomeContainer = styled.form `
 
 
 `
+export const Footer = styled.footer`
+    background-color: #96c6fe;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+`

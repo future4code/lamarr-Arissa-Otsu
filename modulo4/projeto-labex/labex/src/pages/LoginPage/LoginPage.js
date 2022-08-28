@@ -4,7 +4,7 @@ import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
 import useForm from "../../hook/useForm";
 import { base_url } from '../../constants/constants'
-import {Buttons, Header, LoginForm, Input} from './style'
+import {Buttons, Header, LoginForm, Input, Footer} from './style'
 
 function ShowLoginPage () {
 
@@ -74,6 +74,10 @@ function ShowLoginPage () {
                     <button onClick={() => MyRoutes.goToAdminHomePage(navigate)}> Login </button>
                 </Buttons>
             </LoginForm>
+
+            <Footer>
+                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+            </Footer>
         </>
     )
 }

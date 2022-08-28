@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components"
 import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
-import {Header, Buttons, HomeContainer} from './style'
+import {Header, Buttons, HomeContainer, Footer} from './style'
 
 function ShowHomePage () {
 
@@ -21,6 +21,9 @@ function ShowHomePage () {
                     <button type='button' onClick={() => MyRoutes.goToListTripsPage(navigate)}> Lista de Viagens </button>
                 </Buttons>
             </HomeContainer>
+            <Footer>
+                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+            </Footer>
         </>
     )
 }

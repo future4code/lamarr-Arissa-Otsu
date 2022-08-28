@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components"
+import React from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import * as MyRoutes from '../../components/Coordinator'
 import useProtectedPage from "../../hook/useProtectedPage";
-import {AdminHomeContainer, Buttons, Header, ListItem, LoadingIcon} from './style'
+import {AdminHomeContainer, Buttons, Header, ListItem, LoadingIcon, ListButtons, Footer} from './style'
 import { base_url } from '../../constants/constants'
 import useRequestData from "../../hook/useRequestData";
 import Loading from 'react-loading'
+import {BsTrash} from 'react-icons/bs'
 
 function ShowAdminHomePage () {
 
@@ -49,8 +49,10 @@ function ShowAdminHomePage () {
     const renderAllTrips = tripsList&&tripsList.trips.map((trip) => {
         return <ListItem key={trip.id} >
                 <span >  {trip.name} </span>
-                <button onClick={() => MyRoutes.goToTripDetailsPage(navigate, trip.id)}> Detalhes </button>
-                <button onClick={() => deleteTrip(trip.id, trip.name)}> X </button>
+                <ListButtons>
+                    <button onClick={() => MyRoutes.goToTripDetailsPage(navigate, trip.id)}> Detalhes </button>
+                    <button className="deleteButton" onClick={() => deleteTrip(trip.id, trip.name)}> <BsTrash></BsTrash> </button>
+                </ListButtons>   
             </ListItem>
     })
 
@@ -75,6 +77,9 @@ function ShowAdminHomePage () {
             {!isLoadingTripsList && tripsList && renderAllTrips}
             {!isLoadingTripsList && !tripsList && errorTripsList}
             
+            <Footer>
+                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+            </Footer>
         </>
     )
 }

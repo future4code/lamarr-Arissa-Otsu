@@ -25,13 +25,16 @@ export const Buttons = styled.div `
     flex-direction: row;
     align-items: center;
     height: 20vh;
+    min-height: fit-content;
     justify-content: space-evenly;
 
     button {
         width: 10vw;
+        min-width: fit-content;
         border-radius: 0.5em;
         border-color: black;
         height: 2em;
+        min-height: fit-content;
     }
 
     button:hover {
@@ -43,7 +46,9 @@ export const AdminHomeContainer = styled.form `
     display: flex;
     flex-direction: column;
     width: 60vw;
+    min-width: fit-content;
     height: 20vh;
+    min-height: fit-content;
     margin: auto;
     background-color: #FFE2BB;
     border: solid 0.2em orange;
@@ -66,6 +71,7 @@ export const ListItem = styled.li `
     align-items: center;
     margin: auto;
     width: 30vw;
+    min-width: fit-content;
     height: 5vh;
     background-color: #FFE2BB;
     border: solid 0.2em orange;
@@ -81,4 +87,37 @@ export const LoadingIcon = styled.div `
     display: flex;
     flex-direction: row;
     justify-content: center;
+`
+
+export const ListButtons = styled.div `
+
+    display: flex;
+    align-items: center;
+
+    button {
+        width: fit-content;
+        border-radius: 0.5em;
+        border-color: black;
+        height: 2em;
+    }
+
+    button:hover {
+        background-color: orange;
+    }
+
+    .deleteButton {
+        width: fit-content;
+        margin-left: 1em;
+    }
+`
+
+export const Footer = styled.footer`
+    background-color: #96c6fe;
+    bottom: 0;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
 `

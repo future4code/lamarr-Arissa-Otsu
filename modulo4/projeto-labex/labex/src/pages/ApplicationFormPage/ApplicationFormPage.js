@@ -4,7 +4,7 @@ import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
 import useForm from "../../hook/useForm";
 import { base_url } from '../../constants/constants'
-import {Buttons, Form, Header} from "./style";
+import {Buttons, Form, Header, Footer} from "./style";
 import useRequestData from "../../hook/useRequestData";
 
 function ShowApplicationFormPage () {
@@ -363,6 +363,10 @@ function ShowApplicationFormPage () {
                     <button> Enviar </button>
                 </Buttons>
             </Form>
+
+            <Footer>
+                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+            </Footer>
         </>
     )
 }

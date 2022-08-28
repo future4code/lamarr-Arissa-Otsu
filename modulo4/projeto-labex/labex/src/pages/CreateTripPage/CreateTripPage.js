@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components"
 import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
 import { base_url } from '../../constants/constants'
 import useForm from "../../hook/useForm";
 import useProtectedPage from "../../hook/useProtectedPage";
-import {Buttons, Form, Header} from './style'
+import {Buttons, Form, Header, Footer} from './style'
 
 function ShowCreateTripPage () {
 
@@ -125,6 +124,10 @@ function ShowCreateTripPage () {
                     <button> Criar </button>
                 </Buttons>
             </Form>
+
+            <Footer>
+                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+            </Footer>
         </>
     )
 }

@@ -4,7 +4,7 @@ import * as MyRoutes from '../../components/Coordinator'
 import { base_url } from '../../constants/constants'
 import useRequestData from "../../hook/useRequestData";
 import Loading from 'react-loading'
-import { CardContainer, List, Buttons, LoadingIcon, Header} from "./style";
+import { CardContainer, List, Buttons, LoadingIcon, Header, Footer} from "./style";
 
 function ShowListTripsPage () {
 
@@ -46,6 +46,10 @@ function ShowListTripsPage () {
                     <button type='button' onClick={() => MyRoutes.goToApplicationFormPage(navigate)}> Inscreva-se</button>
                 </Buttons>
             </List>
+
+            <Footer>
+                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+            </Footer>
         </>
     )
 }
