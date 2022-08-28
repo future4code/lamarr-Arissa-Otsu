@@ -81,13 +81,12 @@ function ShowTripDetailsPage () {
                 <button type="button" onClick={() => decideCandidate (false, candidate.id)}> Reprovar</button>
                 <button type="button" onClick={() => decideCandidate (true, candidate.id)}> Aprovar </button>
             </div>
-            
         </Candidate>
     })
 
     const approvedCandidatesList = tripDetails && tripDetails.trip.approved.map ((candidate) => {
         return <div key={candidate.id}>
-            <p> {candidate.name} </p>
+            <span> {candidate.name} </span>
         </div>
     })
 
@@ -124,17 +123,17 @@ function ShowTripDetailsPage () {
             
             <CandidatesList>
                 <h2> Candidatos para avaliação </h2>
-                {isLoading && <Loading type={"spokes"} color={"orange"} height={'10%'} width={'10%'} />}
+                <LoadingIcon> {isLoading && <Loading type={"spokes"} color={"orange"} height={'10%'} width={'10%'} />} </LoadingIcon>
                 {!isLoading && tripDetails &&
                 <div>
-                    {candidatesList && candidatesList.length === 0 ? ("Ainda não há candidatos para essa viagem") : (candidatesList)}
+                    {candidatesList && candidatesList.length === 0 ?  <p>Ainda não há candidatos para essa viagem</p> : (candidatesList)}
                 </div>}
                 {!isLoading && !tripDetails && error}
             </CandidatesList>
 
             <ApprovedCandidatesList>
                 <h2> Candidatos aprovados</h2>
-                {isLoading && <Loading type={"spokes"} color={"orange"} height={'10%'} width={'10%'} />}
+                <LoadingIcon>{isLoading && <Loading type={"spokes"} color={"orange"} height={'10%'} width={'10%'} />} </LoadingIcon>
                 {!isLoading && tripDetails && 
                 <div>
                     {approvedCandidatesList && approvedCandidatesList.length === 0 ? ("Nenhum candidato foi aprovado até o momento") : (approvedCandidatesList) }
@@ -143,7 +142,7 @@ function ShowTripDetailsPage () {
             </ApprovedCandidatesList>
 
             <Footer>
-                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+                <footer> Copyright © 2022 | Arissa Otsu | LabeX</footer>
             </Footer>
         </>
     )

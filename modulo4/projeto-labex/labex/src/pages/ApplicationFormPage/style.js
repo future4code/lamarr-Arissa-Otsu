@@ -40,7 +40,7 @@ export const Form = styled.form `
     input {
         margin-bottom: 1em;
         border-radius: 0.5em;
-        border-color: black;
+        border: solid 0.2em orange;
         height: 1.5em;
         padding-left:1em;
     }
@@ -48,14 +48,12 @@ export const Form = styled.form `
     select {
         margin-bottom: 1em;
         border-radius: 0.5em;
-        border-color: black;
+        border: solid 0.2em orange;
         height: 2em;
         padding-left:1em;
-        color: grey;
     }
 `
 export const Buttons = styled.div `
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,8 +63,10 @@ export const Buttons = styled.div `
     button {
         width: 10vw;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 2em;
+        min-height:fit-content;
+        min-width:fit-content;
     }
 
     button:hover {
@@ -78,6 +78,7 @@ export const Footer = styled.footer`
     bottom: 0;
     width: 100%;
     height: 5vh;
+    min-height:fit-content;
     align-items: center;
     display: flex;
     justify-content: center;

@@ -19,17 +19,19 @@ export const Header = styled.header`
     
 `
 export const Buttons = styled.div `
-
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 20vh;
+    min-height: fit-content;
     justify-content: space-evenly;
 
     button {
         width: 10vw;
+        min-width: fit-content;
+        min-height: fit-content;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 2em;
     }
 
@@ -43,6 +45,7 @@ export const HomeContainer = styled.form `
     flex-direction: column;
     width: 30%;
     height: 20vh;
+    min-height: fit-content;
     margin: auto;
     background-color: #FFE2BB;
     border: solid 0.2em orange;
@@ -64,6 +67,7 @@ export const Footer = styled.footer`
     position: fixed;
     width: 100%;
     height: 5vh;
+    min-height: fit-content;
     align-items: center;
     display: flex;
     justify-content: center;

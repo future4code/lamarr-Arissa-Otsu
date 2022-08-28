@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
@@ -9,8 +9,8 @@ import useRequestData from "../../hook/useRequestData";
 
 function ShowApplicationFormPage () {
 
-    
     const navigate = useNavigate()
+
     const [form, onChange, clearInputs] = useForm({name:"", age:"", applicationText:"", profession:"", country:"", id:""})
 
     const [tripsList] = useRequestData(`${base_url}trips`)
@@ -54,7 +54,7 @@ function ShowApplicationFormPage () {
             <Form onSubmit={sendTripRequest}>
                 <h2> Formulário de aplicação </h2>
                 <label htmlFor="name"> Nome:</label>
-                <input //MINIMO DE 3 LETRAS?
+                <input 
                     id="name"
                     name="name"
                     placeholder="Insira seu nome"
@@ -365,7 +365,7 @@ function ShowApplicationFormPage () {
             </Form>
 
             <Footer>
-                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+                <footer> Copyright © 2022 | Arissa Otsu | LabeX </footer>
             </Footer>
         </>
     )

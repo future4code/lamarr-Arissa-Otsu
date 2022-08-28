@@ -10,17 +10,12 @@ import {Buttons, Form, Header, Footer} from './style'
 function ShowCreateTripPage () {
 
     useProtectedPage()
+
     const navigate = useNavigate()
+
     const [form, onChange, clearInputs] = useForm({name:"", planet:"", date:"", description:"", durationInDays:""})
 
-    const date = new Date();
-
-/*     const day = String(date.getDate()).padStart(2, '0');
-
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-
-    const year = date.getFullYear(); */
-
+    const date = new Date()
 
     const createTrip = (event) => {
 
@@ -65,7 +60,7 @@ function ShowCreateTripPage () {
             <Form onSubmit={createTrip}>
                 <h2> Criação de Viagem </h2>
                 <label htmlFor="name"> Nome: </label>
-                <input //MÍNIMO DE 5 LETRAS????
+                <input 
                     id="name"
                     name="name"
                     placeholder="Nome da viagem"
@@ -95,11 +90,11 @@ function ShowCreateTripPage () {
                     value={form.date}
                     onChange={onChange}
                     type="date"
-                    min={date.toISOString().substring(0,10)} //NECESSÁRIO CORRIGIR!!!
+                    min={date.toISOString().substring(0,10)} 
                     required
                 />
                 <label htmlFor="description"> Descrição </label>
-                <input //MÍNIMO DE 30 LETRAS????
+                <input 
                     id="description"
                     name="description"
                     placeholder="Descrição da viagem"
@@ -126,7 +121,7 @@ function ShowCreateTripPage () {
             </Form>
 
             <Footer>
-                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+                <footer> Copyright © 2022 | Arissa Otsu | LabeX</footer>
             </Footer>
         </>
     )

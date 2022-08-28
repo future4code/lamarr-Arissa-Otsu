@@ -20,7 +20,6 @@ export const Header = styled.header`
 `
 
 export const Buttons = styled.div `
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -32,7 +31,7 @@ export const Buttons = styled.div `
         width: 10vw;
         min-width: fit-content;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 2em;
         min-height: fit-content;
     }
@@ -73,6 +72,7 @@ export const ListItem = styled.li `
     width: 30vw;
     min-width: fit-content;
     height: 5vh;
+    min-height: fit-content;
     background-color: #FFE2BB;
     border: solid 0.2em orange;
     margin-bottom: 1em;
@@ -90,15 +90,15 @@ export const LoadingIcon = styled.div `
 `
 
 export const ListButtons = styled.div `
-
     display: flex;
     align-items: center;
 
     button {
         width: fit-content;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 2em;
+        min-height: fit-content;
     }
 
     button:hover {
@@ -116,6 +116,7 @@ export const Footer = styled.footer`
     bottom: 0;
     width: 100%;
     height: 5vh;
+    min-height: fit-content;
     align-items: center;
     display: flex;
     justify-content: center;

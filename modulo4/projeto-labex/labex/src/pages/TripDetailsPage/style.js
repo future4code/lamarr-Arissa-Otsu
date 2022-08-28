@@ -39,6 +39,7 @@ export const TripDetails = styled.div `
 
     div {
         padding-left: 2em;
+        padding-right: 2em;
     }
 `
 
@@ -51,12 +52,15 @@ export const CandidatesList = styled.div `
     border: solid 0.2em orange;
     width: 40vw;
     padding: 1em;
-    margin-bottom: 1em;
-    
+    margin-bottom: 1em;    
     
     h2 {
         text-align: center;
         margin-top: 0.5em;
+    }
+
+    p {
+        text-align: center;
     }
 `
 export const Candidate = styled.div `
@@ -82,7 +86,7 @@ export const Candidate = styled.div `
     button {
         width: 5vw;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 2em;
     }
 
@@ -101,27 +105,31 @@ export const ApprovedCandidatesList = styled.div `
     width: 40vw;
     padding: 1em;
     margin-bottom: 1em;
+    text-align: center;
 
     h2 {
         text-align: center;
         margin-top: 0.5em;
     }
+
+    span{
+        font-size: 1.2em;
+    }
 `
 
 export const Buttons = styled.div `
-
     display: flex;
     flex-direction: row;
     align-items: center;
     margin:auto;
     width: 40vw;
     height: 20vh;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
     button {
         width: 10vw;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 2em;
     }
 

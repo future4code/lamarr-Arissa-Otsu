@@ -66,8 +66,10 @@ export const Buttons = styled.div `
 
     button {
         width: 10vw;
+        min-height: fit-content;
+        min-width:fit-content;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 2em;
     }
 
@@ -84,6 +86,7 @@ export const Footer = styled.footer`
     bottom: 0;
     width: 100%;
     height: 5vh;
+    min-height: fit-content;
     align-items: center;
     display: flex;
     justify-content: center;

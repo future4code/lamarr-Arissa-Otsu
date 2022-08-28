@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import * as MyRoutes from '../../components/Coordinator'
@@ -9,6 +9,7 @@ import {Buttons, Header, LoginForm, Input, Footer} from './style'
 function ShowLoginPage () {
 
     const navigate = useNavigate()
+
     const [form, onChange, clearInputs] = useForm ({email:"", password:""})
 
     const login = (event) => {
@@ -40,10 +41,8 @@ function ShowLoginPage () {
                 <h1> Labe X </h1>
             </Header>
 
-            
-            
             <LoginForm onSubmit={login}>
-                <h2> Página de Login </h2>
+                <h2> Login </h2>
                 <Input>
                     <label htmlFor="email"> E-mail:</label>
                     <input
@@ -68,7 +67,6 @@ function ShowLoginPage () {
                         required
                     />
                 </Input>
-                
                 <Buttons>
                     <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar </button>
                     <button onClick={() => MyRoutes.goToAdminHomePage(navigate)}> Login </button>
@@ -76,7 +74,7 @@ function ShowLoginPage () {
             </LoginForm>
 
             <Footer>
-                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+                <footer> Copyright © 2022 | Arissa Otsu | LabeX</footer>
             </Footer>
         </>
     )

@@ -22,6 +22,7 @@ export const LoginForm = styled.form `
     display: flex;
     flex-direction: column;
     width: 35%;
+    min-width:fit-content;
     margin: auto;
     background-color: #FFE2BB;
     border: solid 0.2em orange;
@@ -38,8 +39,9 @@ export const LoginForm = styled.form `
     input {
         margin-bottom: 2em;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 1.5em;
+        min-height:fit-content;
         padding-left:1em;
         width: 25em;
     }
@@ -56,7 +58,6 @@ export const Input = styled.div`
 `
 
 export const Buttons = styled.div `
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,8 +66,10 @@ export const Buttons = styled.div `
     button {
         width: 5vw;
         border-radius: 0.5em;
-        border-color: black;
+        border-color: darkorange;
         height: 2em;
+        min-height:fit-content;
+        min-width:fit-content;
     }
 
     button:hover {
@@ -80,6 +83,7 @@ export const Footer = styled.footer`
     position: fixed;
     width: 100%;
     height: 5vh;
+    min-height:fit-content;
     align-items: center;
     display: flex;
     justify-content: center;

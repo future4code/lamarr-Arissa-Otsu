@@ -63,6 +63,7 @@ function ShowAdminHomePage () {
                 <img alt="Desenho de um astronauta sentado em uma lua" src="https://img.freepik.com/vetores-premium/astronauta-sentado-na-lua-icon-ilustracao-personagem-de-desenho-animado-do-mascote-do-astronauta-conceito-de-icone-de-ciencia-isolado_138676-976.jpg"></img>
                 <h1> LabeX </h1>
             </Header>
+            
             <AdminHomeContainer>
                 <h2> Painel Administrativo </h2>
                 <Buttons>
@@ -71,6 +72,7 @@ function ShowAdminHomePage () {
                     <button type='button' onClick={() => MyRoutes.goToHomePage(navigate)}> Voltar para Home </button>
                 </Buttons>
             </AdminHomeContainer>
+
             <LoadingIcon>
                 {isLoadingTripsList && <Loading type={"spokes"} color={"orange"} height={'10%'} width={'10%'} />}
             </LoadingIcon>
@@ -78,7 +80,7 @@ function ShowAdminHomePage () {
             {!isLoadingTripsList && !tripsList && errorTripsList}
             
             <Footer>
-                <footer> Copyright © 2022 | Arissa Otsu | Labe X</footer>
+                <footer> Copyright © 2022 | Arissa Otsu | LabeX</footer>
             </Footer>
         </>
     )
