@@ -69,7 +69,7 @@ function ShowLoginPage () {
                 </Input>
                 <Buttons>
                     <button onClick={() => MyRoutes.returnToLastPage(navigate)}> Voltar </button>
-                    <button onClick={() => MyRoutes.goToAdminHomePage(navigate)}> Login </button>
+                    <button> Login </button>
                 </Buttons>
             </LoginForm>
 
