@@ -8,6 +8,8 @@ let clientList = [
 ]
 
 const insertNewClient = (id, name) => {
+
+// INSERIR UM FOR PRA PERCORRER O ARRAY
     if (typeof id === "number" && typeof name ==="string") {
         if (id > clientList.length) {
             clientList.push({id: id, name: name})
