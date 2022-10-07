@@ -12,9 +12,11 @@ const convertToCelsius = (temperature, scale) => {
         } else {
             console.log ("Erro, o parâmetro inserido é inválido. Por favor, corrigir a escala para K ou F.")
         }
+    } else if (typeof temperature !== "number" && typeof scale === "string") {
+        console.log ("Erro. Inserir uma variável do tipo número")
     } else {
-        console.log ("Erro. Parâmetro inválido")
+        console.log ("Erro. Inserir um variável do tipo string")
     }
 }
 
-convertToCelsius(30,"K")
+convertToCelsius(10,"K")

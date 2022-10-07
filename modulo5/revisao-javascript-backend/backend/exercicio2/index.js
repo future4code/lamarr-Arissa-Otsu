@@ -8,43 +8,38 @@ let clientList = [
 ]
 
 const insertNewClient = (id, name) => {
-
-// INSERIR UM FOR PRA PERCORRER O ARRAY (ID ÚNICA) E NOME SEM CARACTERES ESPECIAIS
-    if (typeof id === "number" && typeof name ==="string") {
-        if (id > clientList.length) {
-            clientList.push({id: id, name: name})
-            console.log (clientList)
+    const isNameValid = /^[a-zA-Z\u00C0-\u00FF]+$/.test(name)
+    if (typeof id === "number" && typeof name ==="string" && isNameValid) {
+        const sameId = clientList.find(client => client.id === id) 
+        if (sameId) {
+            console.log ("O id inserido já existe")
         } else {
-            console.log ("Erro, o id informado já existe")
+            clientList.push({id: id, name: name})
+            console.log(clientList)
         }
+    } else {
+        console.log ("Insira parâmetros válidos")
     }
 }
 
-insertNewClient (5, "Arissa")
+insertNewClient (1, "Arissa")
 
 // Geração de Tabuada
 
 let createMultiplicationTable = (number) => {
+    let multiplicationTable = []
     if (typeof number === "number") {
-        if (number > 0 && number < 11) { 
-            return [
-                number*1,
-                number*2,
-                number*3,
-                number*4,
-                number*5,
-                number*6,
-                number*7,
-                number*8,
-                number*9,
-                number*10
-            ]
-        } else {
-            return ("O numero deve estar entre 1 e 10")
+        for (let i=0; i<11; i++) {
+            if (number > 0 && number < 11) { 
+                multiplicationTable.push(`${number} x ${i} = ${number*i}`)
+            } else {
+                return ("A entrada deve ser um número de 1 a 10")
+            }
         }
     } else {
         return ("O parâmetro deve ser um número")
     }
+    return multiplicationTable
 }
 
-console.log (createMultiplicationTable(9))
+console.log (createMultiplicationTable(2))

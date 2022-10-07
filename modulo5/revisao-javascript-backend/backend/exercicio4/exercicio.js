@@ -27,9 +27,10 @@ let unifyLists = () => {
         newList.push({nome: segundaLista[y].nome})
     }
 
-    newList.filter((elem, index, self) => index === self.indexOf(elem))
-    const newList2 = [... new Set(newList)]
-    return newList2
+    const filteredList = new Map();
+    newList.forEach((fruit) => filteredList.set(fruit.nome, fruit));
+    return [...filteredList.values()]
+
 }
 
 console.log(unifyLists())

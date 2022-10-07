@@ -15,4 +15,4 @@ let checkLoginParameters = (email, password) => {
     }
 }
 
-checkLoginParameters ("arissa@email.com", "1236")
+checkLoginParameters ("arissa@email.com", "123456")
