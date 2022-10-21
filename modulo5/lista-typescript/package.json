@@ -11,7 +11,8 @@
     "ex5": "tsc && node ./build/ex5.js",
     "ex6": "tsc && node ./build/ex6.js",
     "ex7": "tsc && node ./build/ex7.js",
-    "ex8": "tsc && node ./build/ex8.js"
+    "ex8": "tsc && node ./build/ex8.js",
+    "ex9": "tsc && node ./build/ex9.js"
   },
   "keywords": [],
   "author": "",
