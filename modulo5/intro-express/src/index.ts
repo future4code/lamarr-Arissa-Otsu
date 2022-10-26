@@ -7,10 +7,6 @@ app.use(express.json())
 
 app.use(cors())
 
-app.listen(3003, () => {
-    console.log("Server is running in http://localhost:3003");
-});
-
 // Exercício 01 - criar endpoint
 app.get("/", (req: Request, res: Response) => {          
     res.status(200).send("Esse é o exercício 1.")
@@ -180,5 +176,51 @@ app.get("/posts/userId", (req: Request, res: Response) => {
             filteredPosts.push(post)
         } 
     })
-    res.status(200).send(filteredPosts)
+
+    if (filteredPosts.length < 1) {
+        res.status(400).send("O id inserido não existe.")
+    } else {
+        res.status(200).send(filteredPosts)
+    }
 })
+
+// Exercício 09 - criar um endpoint que exclua um post
+app.delete("/posts/:postId", (req: Request, res: Response) => {        
+    const postId = Number(req.params.postId) 
+
+    let newPostArray: Post[] = []
+
+    posts.map((post)=> {
+        if (post.id !== postId) {
+            newPostArray.push(post)
+        } 
+    })
+
+    if (newPostArray.length === posts.length) {
+        res.status(400).send("O id inserido não existe.")
+    } else {
+        res.status(200).send(newPostArray)
+    }
+})
+
+
+// Exercício 10 - criar um endpoint que exclua um usuário
+
+app.delete("/users/:id", (req: Request, res: Response) => {        
+    const id = Number(req.params.id) 
+
+    let newUsersArray = users.filter((user)=> {
+        return (user.id !== id) 
+    })
+
+    if (newUsersArray.length === users.length) {
+        res.status(400).send("O id inserido não existe.")
+    } else {
+        res.status(200).send(newUsersArray)
+    }
+})
+
+
+app.listen(3003, () => {
+    console.log("Server is running in http://localhost:3003");
+});
