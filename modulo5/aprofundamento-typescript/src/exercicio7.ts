@@ -31,3 +31,39 @@ function retornarValor (nome:string) {
 }
 
 console.log(retornarValor("Camarão Empanado"))
+
+// c)
+type Venda = {
+    nome: string,
+    cliente: string
+}
+
+let arraydeProdutosVendidos: Venda[] = [{nome: "Batata Frita", cliente: "Arissa"}]
+
+function realizarVenda (nome:string, cliente: string): Venda[] {
+    arraydeProdutosVendidos.push({nome, cliente})
+    return arraydeProdutosVendidos
+}
+
+console.log(realizarVenda("Camarão Empanado", "Luna"))
+
+//d)
+let arrayDeLucro: number[] = []
+let somaDosLucros: number = 0
+function determinarLucro () {
+    arraydeProdutosVendidos.map((prato) => {
+        for (let y=0; y<arrayDeProdutos.length; y++) {
+            if(prato.nome === arrayDeProdutos[y].nome) {
+                return arrayDeLucro.push(arrayDeProdutos[y].venda - arrayDeProdutos[y].custo)
+            }
+        }
+    }) 
+
+    for (let x=0; x<arrayDeLucro.length; x++) {
+        somaDosLucros += arrayDeLucro[x]
+    }
+
+    return (`O lucro é de R$ ${somaDosLucros},00`)
+}
+
+console.log(determinarLucro())
