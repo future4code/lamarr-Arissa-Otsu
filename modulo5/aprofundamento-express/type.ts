@@ -5,3 +5,10 @@ export type Tarefa = {
     title: string
     completed: boolean
 }
+
+export type TarefaFiltrada = {
+    todos:{
+        selectedUser: Tarefa[],
+        others: Tarefa[]
+    }
+}

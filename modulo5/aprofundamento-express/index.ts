@@ -1,6 +1,7 @@
 import { listaDeTarefas } from "./data"
 import express, {Request, Response} from "express"
 import cors from 'cors'
+import * as allTypes from './type'
 
 const app = express()
 
@@ -44,7 +45,7 @@ app.get("/tarefas",(req:Request, res:Response) => {
 app.post("/tarefas", (req:Request, res:Response) => {
     const {userId, id, title, completed } = req.body
 
-    if(!userId|| !id|| !title || completed===undefined ){
+    if(!userId || !id || !title || completed===undefined){
         res.status(400).send('Necessário inserir os parâmetros')
     }
 
@@ -58,14 +59,104 @@ app.put("/tarefas/:idDoUsuario", (req:Request, res:Response) => {
     const idDoUsuario = Number(req.params.idDoUsuario)
     const idDaTarefa = Number(req.headers.authorization)
 
-    let listaAtualizada = listaDeTarefas.map((tarefa => {
+    if(!idDoUsuario || !idDaTarefa){
+        res.status(400).send('Necessário inserir os parâmetros (id do usuário e id da tarefa).')
+    }
+
+    listaDeTarefas.map((tarefa => {
         if (tarefa.userId === idDoUsuario) {
-            if(tarefa.id === idDaTarefa) {
-                return {...listaDeTarefas, !tarefa.completed}
-            }
-        }
+            if (tarefa.id === idDaTarefa) {
+                let index = listaDeTarefas.findIndex((tarefa => {
+                    return tarefa.id === idDaTarefa
+                }))
+    
+                if (index !== -1) {
+                    listaDeTarefas[index].completed = !listaDeTarefas[index].completed
+                } 
+                return listaDeTarefas
+            } 
+        } 
     }))
-    res.status(200).send(listaAtualizada)
+    
+    res.status(200).send(listaDeTarefas)
+})
+
+// Exercício 07
+
+app.delete("/tarefas", (req:Request, res:Response) => {
+    const idDaTarefa = Number(req.query.idDaTarefa)
+
+    if(!idDaTarefa) {
+        res.status(400).send('Necessário inserir o id da tarefa.')
+    }
+
+    let novaLista = listaDeTarefas.filter((tarefa)=> {
+        return (tarefa.id !== idDaTarefa) 
+    })
+
+    if (novaLista.length === listaDeTarefas.length) {
+        res.status(400).send("O id inserido não existe.")
+    } else {
+        res.status(200).send(novaLista)
+    }
+})
+
+// Exercício 08
+app.get("/tarefas/usuario", (req:Request, res:Response) => {
+    const idDoUser= Number(req.query.idDoUser)
+
+    if(!idDoUser) {
+        res.status(400).send('Necessário inserir o id do usuário.')
+    }
+
+    let listaDoUsuario: allTypes.Tarefa[] = []
+    listaDeTarefas.map((tarefa)=> {
+        if(idDoUser === tarefa.userId) {
+            return listaDoUsuario.push(tarefa)
+        }
+    })
+    
+    if (listaDoUsuario.length < 1 ) {
+        res.status(400).send("O id inserido não existe.")
+    } else {
+        res.status(200).send(listaDoUsuario)
+    }
+})
+
+// Exercício 09
+// https://documenter.getpostman.com/view/22375499/2s8YKCH41S
+
+// Exercício 10
+app.get("/tarefas/usuarios", (req:Request, res:Response) => {
+    const idDoUser= Number(req.query.idDoUser)
+
+    if(!idDoUser) {
+        res.status(400).send('Necessário inserir o id do usuário.')
+    }
+
+    let listaDoUsuario: allTypes.Tarefa[] = []
+    let listaOutros: allTypes.Tarefa[] = []
+
+    listaDeTarefas.map((tarefa)=> {
+        if(idDoUser === tarefa.userId) {
+            return listaDoUsuario.push(tarefa)
+        } else {
+            return listaOutros.push(tarefa)
+        }
+    })
+    
+    let listaCompleta: allTypes.TarefaFiltrada = {
+        todos: {
+            selectedUser: listaDoUsuario,
+            others:listaOutros
+        }
+    }
+
+    if (listaDoUsuario.length < 1 ) {
+        res.status(400).send("O id inserido não existe.")
+    } else {
+        res.status(200).send(listaCompleta)
+    }
 })
 
 
