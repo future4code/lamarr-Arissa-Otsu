@@ -167,6 +167,82 @@ app.delete("/actor/:id", async (req: Request, res: Response) => {
     }
 });
 
+// Exercício 05
+const addMovie = async (
+    id: string,
+    name: string,
+    synopsis: string,
+    release_date: Date,
+    playing_limit_date: Date,
+): Promise<void> => {
+    await connection ("Movie")
+    .insert({
+        id: id,
+        name: name,
+        synopsis: synopsis,
+        release_date: release_date,
+        playing_limit_date: playing_limit_date,
+    })
+    .into("Movie")
+};
+
+app.post("/movie", async (req: Request, res: Response) => {
+    try {
+        await addMovie (
+            req.body.id,
+            req.body.name,
+            req.body.synopsis,
+            req.body.release_date,
+            req.body.playing_limit_date
+        );
+
+        res.status(200).send({message: "Filme inserido com sucesso."})
+    } catch (err:any) {
+        res.status(400).send({
+        message: err.message,
+    });
+    }
+});
+
+// Exercício 06
+const getAllMovies = async () : Promise <void> => {
+    const movies = await connection.raw(`SELECT * FROM Movie LIMIT 15`)
+	return movies[0]
+}
+
+app.get("/movie/all", async (req: Request, res: Response) => {
+    try {
+        const result = await getAllMovies();
+
+        res.status(200).send(result)
+    } catch (err:any) {
+        res.status(400).send({
+        message: err.message,
+    });
+    }
+});
+
+// Exercício 07
+const searchMovie = async (
+    search:string,
+) : Promise <void> => {
+    const movies = await connection.raw(`SELECT * FROM Movie WHERE name LIKE '%${search}%' OR synopsis LIKE '%${search}%'`)
+	return movies[0]
+}
+
+app.get("/movie/search", async (req: Request, res: Response) => {
+    try {
+        const search = req.query.search;
+        const result = await searchMovie(search as string);
+
+        res.status(200).send(result)
+    } catch (err:any) {
+        res.status(400).send({
+        message: err.message,
+    });
+    }
+});
+
 app.listen(3003, () => {
     console.log("Server is running in http://localhost:3003");
 });
