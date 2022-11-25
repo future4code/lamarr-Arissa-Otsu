@@ -1,0 +1,23 @@
+
+
+GET https://viacep.com.br/ws/01247090/json/
+Content-Type: application/json
+
+### 
+GET http://localhost:3003/address
+Content-Type: application/json
+
+{
+    "cep": "01247090"
+}
+
+### 
+POST http://localhost:3003/users/create
+Content-Type: application/json
+
+{
+    "zipcode": "01247090",
+    "number": "15",
+    "complement": "203"
+}
+
