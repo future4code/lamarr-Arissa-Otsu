@@ -15,9 +15,12 @@ Content-Type: application/json
 POST http://localhost:3003/users/create
 Content-Type: application/json
 
-{
-    "zipcode": "01247090",
-    "number": "15",
-    "complement": "203"
+{   
+    "name": "A",
+    "nickname": "A",
+    "email": "arissaotsu@gmail.com",
+    "zipcode": "84020220",
+    "number": "82",
+    "complement": "120"
 }
 
