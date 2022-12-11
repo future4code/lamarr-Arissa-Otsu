@@ -1,6 +1,4 @@
 import { Request, Response } from "express"
-import connection from "../database/connection"
-import { TABLE_USERS } from "../database/tableNames"
 import { UserDatabase } from "../database/userDatabase"
 import { User } from "../models/User"
 

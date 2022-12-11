@@ -21,7 +21,7 @@ export class UserDatabase extends BaseDatabase {
         const result = await BaseDatabase
         .connection(UserDatabase.TABLE_USERS)
         .select()
-        .where(id)
+        .where({id})
 
         return result
     }
