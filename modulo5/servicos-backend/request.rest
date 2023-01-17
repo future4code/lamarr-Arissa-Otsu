@@ -1,26 +1,23 @@
-
-
-GET https://viacep.com.br/ws/01247090/json/
+GET https://viacep.com.br/ws/01247090/json/ 
 Content-Type: application/json
 
 ### 
-GET http://localhost:3003/address
+GET http://localhost:3003/address 
 Content-Type: application/json
 
 {
-    "cep": "01247090"
+"cep": "01247090"
 }
 
 ### 
-POST http://localhost:3003/users/create
+POST http://localhost:3003/users/create 
 Content-Type: application/json
 
-{   
-    "name": "A",
-    "nickname": "A",
-    "email": "arissaotsu@gmail.com",
-    "zipcode": "84020220",
-    "number": "82",
-    "complement": "120"
+{
+    "name": "Fernanda", 
+    "nickname": "Fer", 
+    "email": "fer@gmail.com", 
+    "zipcode": "01247090", 
+    "number": "8", 
+    "complement": "12"
 }
-
