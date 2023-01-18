@@ -1,0 +1,18 @@
+### Endpoint de teste
+GET http://localhost:3003/
+
+### Create User
+POST http://localhost:3003/createUser
+Content-Type: application/json
+
+{
+    "name": "Ciclana",
+    "email": "ciclana@email.com",
+    "password": "246810"
+}
+
+### Get All Users
+GET http://localhost:3003/all
+
+### Delete User
+DELETE http://localhost:3003/2
