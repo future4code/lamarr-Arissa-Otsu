@@ -1,0 +1,32 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "name": "Fulana", 
+   "nickname": "Lana", 
+   "email": "fulana@email.com" ,
+   "password": "fulana123"
+}
+### 
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "fulana@email.com" ,
+   "password": "fulana123"
+}
+###
+
+PUT http://localhost:3003/user/edit
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiZmI0NmY1LThjMzYtNDgzOC1hMGY4LWNkMjI2NzJhNDIyNiIsImlhdCI6MTY3NTIwOTgyMywiZXhwIjoxNjc1MjEzNDIzfQ.8SuGOCrDe8EwrBzUPySm2Shme-VD5tb_5S_TpFz0JlU
+Content-Type: application/json
+
+{
+   "name": "Fulana", 
+   "nickname": "Fulaninha" 
+}
+
+###
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiZmI0NmY1LThjMzYtNDgzOC1hMGY4LWNkMjI2NzJhNDIyNiIsImlhdCI6MTY3NTIwOTc0MCwiZXhwIjoxNjc1MjEzMzQwfQ.KqApNxqmL0GvHIoVQN_WL_KmplP6faaeBnCLD7fV6W4
+Content-Type: application/json
