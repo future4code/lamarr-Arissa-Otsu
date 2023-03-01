@@ -27,7 +27,7 @@ describe ("Testing function performPurchase", () => {
     
     test("Testing value greater than balance", () => {
     
-        const result = performPurchase(user, 150)
+        const result = performPurchase(user, 160)
         
         expect(result).not.toBeDefined()
     })
