@@ -1,0 +1,1 @@
+// Em ordem crescente de eficência: 4 -> 2 = 1 -> 3
